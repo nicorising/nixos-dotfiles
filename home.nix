@@ -17,13 +17,13 @@
   home.packages = with pkgs; [
     bluez
     bluez-tools
+    brightnessctl
     btop
     kitty
     neofetch
     nil # Nix language server
     nixfmt-rfc-style # Nix formatter
     pamixer
-    pavucontrol
     ranger
     signal-desktop
     slack
