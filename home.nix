@@ -8,10 +8,14 @@
   home = {
     username = "nico";
     homeDirectory = "/home/nico";
+
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
   };
 
   home.packages = with pkgs; [
@@ -19,6 +23,8 @@
     bluez-tools
     brightnessctl
     btop
+    hyprpaper
+    jq # CLI JSON processor
     kitty
     neofetch
     nil # Nix language server
@@ -32,6 +38,9 @@
     usbutils
     waybar
     wofi
+
+    # Add custom scripts
+    (writeShellScriptBin "hyprland-wallpapers" (builtins.readFile ./scripts/hyprland-wallpapers.sh))
   ];
 
   services.udiskie.enable = true;

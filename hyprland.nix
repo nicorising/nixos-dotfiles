@@ -1,13 +1,44 @@
 {
+  # Copy over wallpapers
+  home.file.".local/share/wallpapers" = {
+    source = ./wallpapers;
+    recursive = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
 
     settings = {
+      exec-once = [
+        "waybar"
+      ];
+
+      general = {
+        border_size = 1;
+        gaps_in = 8;
+        gaps_out = 16;
+        resize_on_border = true;
+      };
+
+      decoration = {
+        rounding = 4;
+        inactive_opacity = 0.9;
+      };
+
       input = {
         kb_layout = "us";
         kb_model = "pc104";
+        repeat_rate = 35;
+        repeat_delay = 200;
+
         follow_mouse = 2;
-        touchpad.natural_scroll = true;
+      };
+
+      gestures = {
+        workspace_swipe_invert = false;
+        workspace_swipe_forever = true; # Allow swiping multiple workspaces at once
+        workspace_swipe_min_speed_to_force = 1;
+        workspace_swipe_cancel_ratio = 0.02;
       };
 
       bind = [
@@ -31,21 +62,22 @@
         "super, 9, workspace, 9"
         "super, 0, workspace, 10"
 
-        "super shift, 1, movetoworkspace, 1"
-        "super shift, 2, movetoworkspace, 2"
-        "super shift, 3, movetoworkspace, 3"
-        "super shift, 4, movetoworkspace, 4"
-        "super shift, 5, movetoworkspace, 5"
-        "super shift, 6, movetoworkspace, 6"
-        "super shift, 7, movetoworkspace, 7"
-        "super shift, 8, movetoworkspace, 8"
-        "super shift, 9, movetoworkspace, 9"
-        "super shift, 0, movetoworkspace, 10"
+        "super shift, 1, movetoworkspacesilent, 1"
+        "super shift, 2, movetoworkspacesilent, 2"
+        "super shift, 3, movetoworkspacesilent, 3"
+        "super shift, 4, movetoworkspacesilent, 4"
+        "super shift, 5, movetoworkspacesilent, 5"
+        "super shift, 6, movetoworkspacesilent, 6"
+        "super shift, 7, movetoworkspacesilent, 7"
+        "super shift, 8, movetoworkspacesilent, 8"
+        "super shift, 9, movetoworkspacesilent, 9"
+        "super shift, 0, movetoworkspacesilent, 10"
+
+        "super, 1, workspace, 1"
       ];
 
       bindm = [
         "super, mouse:272, movewindow"
-        "super, mouse:273, resizewindow"
       ];
 
       bindel = [
@@ -56,11 +88,9 @@
         ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
       ];
 
-      exec-once = [
-        "waybar"
+      gesture = [
+        "3, horizontal, workspace"
       ];
-
-      windowrule = "suppressevent maximize, class:.*";
     };
   };
 }
