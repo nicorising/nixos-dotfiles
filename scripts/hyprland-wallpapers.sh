@@ -1,59 +1,38 @@
 #!/usr/bin/env bash
 
-# Path to wallpapers directory (managed by Home Manager)
 WALLPAPER_DIR="$HOME/.local/share/wallpapers"
-
-# Number of workspaces (adjust if you have more/fewer)
 NUM_WORKSPACES=10
 
-# Check if wallpaper directory exists
-if [ ! -d "$WALLPAPER_DIR" ]; then
-  echo "Wallpaper directory $WALLPAPER_DIR not found!"
-  exit 1
+wallpapers=$(find "$WALLPAPER_DIR" | shuf)
+
+if ! pgrep swww-daemon > /dev/null; then
+  swww-daemon &
+  sleep 2
 fi
 
-# Get all image files and shuffle them
-wallpapers=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | shuf))
+wallpaper_map_file="$HOME/.cache/hyprland-wallpapers"
+mkdir -p "$(dirname "$wallpaper_map_file")"
 
-if [ ${#wallpapers[@]} -eq 0 ]; then
-  echo "No wallpapers found in $WALLPAPER_DIR"
-  exit 1
-fi
-
-# Kill existing hyprpaper instance
-pkill hyprpaper 2>/dev/null || true
-
-# Wait a moment for it to fully close
-sleep 1
-
-# Create temporary hyprpaper config
-config_file="/tmp/hyprpaper.conf"
-echo "# Generated hyprpaper config" > "$config_file"
-
-# Preload wallpapers and assign them to workspaces
 for i in $(seq 1 $NUM_WORKSPACES); do
-  # Use modulo to cycle through wallpapers if we have fewer than workspaces
   wallpaper_index=$(( (i - 1) % ${#wallpapers[@]} ))
   wallpaper="${wallpapers[$wallpaper_index]}"
-  
-  echo "preload = $wallpaper" >> "$config_file"
+  echo "$i:$wallpaper" >> "$wallpaper_map_file"
 done
 
-# Get monitor name(s) - this gets all connected monitors
-monitors=($(hyprctl monitors -j | jq -r '.[].name'))
+initial_wallpaper="${wallpapers[0]}"
+swww img "$initial_wallpaper" -t none
 
-# Set wallpapers for each monitor/workspace combination
-for monitor in "${monitors[@]}"; do
-  for i in $(seq 1 $NUM_WORKSPACES); do
-    wallpaper_index=$(( (i - 1) % ${#wallpapers[@]} ))
-    wallpaper="${wallpapers[$wallpaper_index]}"
-    echo "wallpaper = $monitor,$wallpaper" >> "$config_file"
-  done
-done
+socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | \
+while read -r line; do
+  case "$line" in
+    workspace*)
+      workspace=$(echo "$line" | cut -d',' -f2)
+      wallpaper=$(grep "^$workspace:" "$wallpaper_map_file" | head -n1 | cut -d':' -f2-)
+      if [ -n "$wallpaper" ] && [ -f "$wallpaper" ]; then
+        swww img "$wallpaper" --transition-type fade --transition-duration 0.5
+      fi
+      ;;
+  esac
+done &
 
-echo "splash = false" >> "$config_file"
-
-# Start hyprpaper with the generated config
-hyprpaper -c "$config_file" &
-
-echo "Wallpapers set successfully!"
+wait

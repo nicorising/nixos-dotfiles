@@ -23,21 +23,26 @@
     bluez-tools
     brightnessctl
     btop
-    hyprpaper
     jq # CLI JSON processor
     kitty
+    libreoffice
     neofetch
+    networkmanagerapplet
     nil # Nix language server
     nixfmt-rfc-style # Nix formatter
     pamixer
     ranger
     signal-desktop
     slack
+    socat # Data relay tool
     spotify
+    swww # Wallpaper manager
     tldr
+    unzip
     usbutils
     waybar
     wofi
+    zathura
 
     # Add custom scripts
     (writeShellScriptBin "hyprland-wallpapers" (builtins.readFile ./scripts/hyprland-wallpapers.sh))

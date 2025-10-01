@@ -11,6 +11,7 @@
     settings = {
       exec-once = [
         "waybar"
+        "hyprland-wallpapers"
       ];
 
       general = {
@@ -39,6 +40,10 @@
         workspace_swipe_forever = true; # Allow swiping multiple workspaces at once
         workspace_swipe_min_speed_to_force = 1;
         workspace_swipe_cancel_ratio = 0.02;
+      };
+
+      misc = {
+        disable_hyprland_logo = true;
       };
 
       bind = [

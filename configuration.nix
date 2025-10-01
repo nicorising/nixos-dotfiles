@@ -10,8 +10,8 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.networkmanager.enable = true;
   networking.hostName = "nicotop";
+  networking.networkmanager.enable = true;
 
   time.timeZone = "America/New_York";
 
