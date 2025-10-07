@@ -45,6 +45,8 @@
     "flakes"
   ];
 
+  security.polkit.enable = true;
+
   # Audio
   security.rtkit.enable = true;
   services.pipewire = {
@@ -61,6 +63,13 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+  };
+
+  # Fingerprint reader
+  services.fprintd.enable = true;
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
   };
 
   programs.neovim = {

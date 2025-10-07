@@ -23,13 +23,18 @@
     bluez-tools
     brightnessctl
     btop
+    hyprlock
+    hyprpolkitagent
+    hyprshot
     jq # CLI JSON processor
+    keepassxc
     kitty
     libreoffice
     neofetch
     networkmanagerapplet
     nil # Nix language server
     nixfmt-rfc-style # Nix formatter
+    nerd-fonts.noto
     pamixer
     ranger
     signal-desktop
@@ -40,6 +45,7 @@
     tldr
     unzip
     usbutils
+    vlc
     waybar
     wofi
     zathura
@@ -47,6 +53,8 @@
     # Add custom scripts
     (writeShellScriptBin "hyprland-wallpapers" (builtins.readFile ./scripts/hyprland-wallpapers.sh))
   ];
+
+  fonts.fontconfig.enable = true;
 
   services.udiskie.enable = true;
 
@@ -57,6 +65,12 @@
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/github_ed25519";
+        identitiesOnly = true;
+      };
+      "gitlab.com" = {
+        hostname = "gitlab.com";
+        user = "git";
+        identityFile = "~/.ssh/gitlab_ed25519";
         identitiesOnly = true;
       };
     };

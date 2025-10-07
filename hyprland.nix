@@ -10,6 +10,7 @@
 
     settings = {
       exec-once = [
+        "systemctl --user start hyprpolkitagent"
         "waybar"
         "hyprland-wallpapers"
       ];
@@ -19,6 +20,10 @@
         gaps_in = 8;
         gaps_out = 16;
         resize_on_border = true;
+      };
+
+      dwindle = {
+        force_split = 2; # Always open windows to the right
       };
 
       decoration = {
@@ -42,9 +47,8 @@
         workspace_swipe_cancel_ratio = 0.02;
       };
 
-      misc = {
-        disable_hyprland_logo = true;
-      };
+      xwayland.force_zero_scaling = true;
+      misc.disable_hyprland_logo = true;
 
       bind = [
         "super, return, exec, kitty"
@@ -52,9 +56,20 @@
         "super, w, exec, librewolf"
         "super, space, exec, wofi --show drun"
         "super, q, killactive"
-        "super shift, q, exit"
         "super, f, togglefloating"
         "super, p, pseudo"
+        "super, l, exec, hyprlock"
+        "super control shift, q, exit"
+
+        "super, l, movefocus, r"
+        "super, h, movefocus, l"
+        "super, j, movefocus, d"
+        "super, k, movefocus, u"
+
+        "super shift, l, swapwindow, r"
+        "super shift, h, swapwindow, l"
+        "super shift, j, swapwindow, d"
+        "super shift, k, swapwindow, u"
 
         "super, 1, workspace, 1"
         "super, 2, workspace, 2"
@@ -78,7 +93,7 @@
         "super shift, 9, movetoworkspacesilent, 9"
         "super shift, 0, movetoworkspacesilent, 10"
 
-        "super, 1, workspace, 1"
+        ", print, exec, hyprshot -m region"
       ];
 
       bindm = [
@@ -86,15 +101,78 @@
       ];
 
       bindel = [
-        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
-        ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
+        ", XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+        ", XF86Print, exec, hyprshot -m region"
       ];
 
       gesture = [
         "3, horizontal, workspace"
+      ];
+    };
+  };
+
+  programs.hyprlock = {
+    enable = true;
+
+    settings = {
+      auth.fingerprint = {
+        enabled = true;
+      };
+
+      background = {
+        path = "$HOME/.cache/hyprlock-wallpaper";
+        blur_passes = 1;
+        contrast = 1;
+        vibrancy = 0.2;
+        vibrancy_darkness = 0.2;
+      };
+
+      input-field = [
+        {
+          size = "400, 60";
+          outline_thickness = 2;
+          dots_size = 0.2;
+          dots_spacing = 0.35;
+          dots_center = true;
+          outer_color = "rgb(40, 40, 40)";
+          inner_color = "rgba(40, 40, 40, 0.5)";
+          font_color = "rgb(235, 219, 178)";
+          fade_on_empty = false;
+          rounding = -1;
+          check_color = "rgb(152, 151, 26)";
+          fail_color = "rgb(204, 36, 29)";
+          fail_transition = 300;
+          placeholder_text = "";
+          hide_input = false;
+          position = "0, -200";
+          halign = "center";
+          valign = "center";
+        }
+      ];
+
+      label = [
+        {
+          text = ''cmd[update:1000] echo "$(date +"%-I:%M")"'';
+          color = "rgb(235, 219, 178)";
+          font_size = 128;
+          font_family = "NotoSansM NFM Cond ExtBd";
+          position = "0, 200";
+          halign = "center";
+          valign = "center";
+        }
+        {
+          text = ''cmd[update:1000] echo "$(date +"%A, %B %d")"'';
+          color = "rgb(235, 219, 178)";
+          font_size = 24;
+          font_family = "NotoSansM NFM";
+          position = "0, 300";
+          halign = "center";
+          valign = "center";
+        }
       ];
     };
   };
