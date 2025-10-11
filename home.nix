@@ -2,6 +2,7 @@
 
 {
   imports = [
+    programs/btop.nix
     programs/git.nix
     programs/hyprland.nix
     programs/hyprlock.nix
@@ -25,40 +26,40 @@
     packages = with pkgs; [
       bluez
       bluez-tools
-      brightnessctl
-      btop
-      capitaine-cursors-themed
-      hyprlock
-      hyprpolkitagent
-      hyprshot
-      hyprsunset
+      brightnessctl # CLI screen brightness control
+      btop # System monitor
+      capitaine-cursors-themed # Cursor theme
+      hyprlock # Screen locker
+      hyprpolkitagent # Polkit authentication agent
+      hyprshot # Screenshot tool
+      hyprsunset # Blue-light filtering
       jq # CLI JSON processor
-      keepassxc
+      keepassxc # Password manager
       kitty # Terminal emulator
       libreoffice
-      ncdu
-      neofetch
-      networkmanagerapplet
+      ncdu # Disk storage utility
+      neofetch # System information display
+      networkmanagerapplet # GUI for advanced network settings
       nil # Nix language server
       nixfmt-rfc-style # Nix formatter
-      nerd-fonts.noto
+      nerd-fonts.noto # Nerd fonts
       pamixer
       playerctl # CLI media player control
       python314
-      ranger
+      ranger # TUI file explorer
       signal-desktop
       slack
       socat # Data relay tool
       spotify
       swww # Wallpaper manager
       tldr
-      unzip
-      usbutils
-      vlc
-      waybar
+      unzip # Unzip utility
+      usbutils # USB CLI tools
+      vlc # Media player
+      waybar # Taskbar
       wev # Wayland event viewer
       wofi
-      zathura
+      zathura # PDF viewer
 
       # Add custom scripts
       (writeShellScriptBin "hyprland-wallpapers" (builtins.readFile ./scripts/hyprland-wallpapers.sh))
