@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration";
+  description = "My laptop's NixOS configuration files.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

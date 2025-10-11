@@ -3,6 +3,7 @@
 {
   imports = [
     ./hyprland.nix
+    ./hyprlock.nix
   ];
 
   home = {
@@ -13,9 +14,6 @@
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
-    sessionPath = [
-      "$HOME/.local/bin"
-    ];
   };
 
   home.packages = with pkgs; [
@@ -23,9 +21,11 @@
     bluez-tools
     brightnessctl
     btop
+    capitaine-cursors-themed
     hyprlock
     hyprpolkitagent
     hyprshot
+    hyprsunset
     jq # CLI JSON processor
     keepassxc
     kitty
@@ -36,6 +36,7 @@
     nixfmt-rfc-style # Nix formatter
     nerd-fonts.noto
     pamixer
+    python314
     ranger
     signal-desktop
     slack
@@ -53,6 +54,26 @@
     # Add custom scripts
     (writeShellScriptBin "hyprland-wallpapers" (builtins.readFile ./scripts/hyprland-wallpapers.sh))
   ];
+
+  home.pointerCursor = {
+    enable = true;
+    package = pkgs.capitaine-cursors-themed;
+    name = "Capitaine Cursors (Gruvbox)";
+    size = 24;
+  };
+
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
+  gtk = {
+    enable = true;
+
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+  };
 
   fonts.fontconfig.enable = true;
 
@@ -151,16 +172,10 @@
     };
   };
 
-  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-
-  gtk = {
-    enable = true;
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
+  # Copy over wallpapers
+  home.file.".local/share/wallpapers" = {
+    source = ./wallpapers;
+    recursive = true;
   };
 
   home.stateVersion = "25.05";
