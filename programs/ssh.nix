@@ -9,6 +9,7 @@
         identityFile = "~/.ssh/github_ed25519";
         identitiesOnly = true;
       };
+
       "gitlab.com" = {
         hostname = "gitlab.com";
         user = "git";
@@ -16,5 +17,7 @@
         identitiesOnly = true;
       };
     };
+
+    programs.ssh.enableDefaultConfig = false;
   };
 }
