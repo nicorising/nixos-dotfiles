@@ -13,13 +13,21 @@
       ];
 
       userSettings = {
-        window.autoDetectColorScheme = true;
-        workbench.preferredDarkColorTheme = "Gruvbox Dark Hard";
-        workbench.preferredLightColorTheme = "Gruvbox Light Hard";
+        editor = {
+          editor.formatOnSave = true;
+          fontFamily = "'NotoSansM NFM', 'monospace', monospace";
+        };
 
-        editor.formatOnSave = true;
-        files.insertFinalNewline = true;
-        files.trimFinalNewlines = true;
+        files = {
+          insertFinalNewline = true;
+          trimFinalNewlines = true;
+        };
+
+        window.autoDetectColorScheme = true;
+        workbench = {
+          preferredDarkColorTheme = "Gruvbox Dark Hard";
+          preferredLightColorTheme = "Gruvbox Light Hard";
+        };
 
         nix = {
           enableLanguageServer = true;
