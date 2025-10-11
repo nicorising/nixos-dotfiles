@@ -5,7 +5,7 @@
     settings = {
       exec-once = [
         "systemctl --user start hyprpolkitagent"
-        ''hyprctl setcursor "Capitaine Cursors (Gruvbox)" 24''
+        "hyprctl setcursor 'Capitaine Cursors (Gruvbox)' 24"
         "waybar"
         "hyprland-wallpapers"
       ];
