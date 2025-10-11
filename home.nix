@@ -2,7 +2,6 @@
 
 {
   imports = [
-    programs/bash.nix
     programs/btop.nix
     programs/git.nix
     programs/hyprland.nix
@@ -19,24 +18,16 @@
     username = "nico";
     homeDirectory = "/home/nico";
 
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-    };
-
     packages = with pkgs; [
       bluez
       bluez-tools
       brightnessctl # CLI screen brightness control
-      btop # System monitor
       capitaine-cursors-themed # Cursor theme
-      hyprlock # Screen locker
       hyprpolkitagent # Polkit authentication agent
       hyprshot # Screenshot tool
-      hyprsunset # Blue-light filtering
       jq # CLI JSON processor
       keepassxc # Password manager
-      kitty # Terminal emulator
+      killall # Process killing command
       libreoffice
       ncdu # Disk storage utility
       neofetch # System information display
@@ -46,7 +37,7 @@
       nerd-fonts.noto # Nerd fonts
       pamixer
       playerctl # CLI media player control
-      python314
+      python314 # Python 3.14
       ranger # TUI file explorer
       signal-desktop
       slack
@@ -66,6 +57,15 @@
       (writeShellScriptBin "hyprland-wallpapers" (builtins.readFile ./scripts/hyprland-wallpapers.sh))
     ];
 
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
+
+    shellAliases = {
+      grep = "grep --color=auto";
+    };
+
     # Copy over wallpapers
     file.".local/share/wallpapers" = {
       source = ./wallpapers;
@@ -82,8 +82,8 @@
     stateVersion = "25.05";
   };
 
+  programs.bash.enable = true;
   fonts.fontconfig.enable = true;
-
   services.udiskie.enable = true;
 
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
