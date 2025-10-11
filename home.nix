@@ -12,6 +12,7 @@
     programs/neovim.nix
     programs/ssh.nix
     programs/vscode.nix
+    programs/waybar.nix
   ];
 
   home = {
@@ -48,7 +49,6 @@
       unzip # Unzip utility
       usbutils # USB CLI tools
       vlc # Media player
-      waybar # Taskbar
       wev # Wayland event viewer
       wofi
       zathura # PDF viewer
