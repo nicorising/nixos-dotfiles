@@ -4,10 +4,10 @@
 
     settings = {
       exec-once = [
-        "systemctl --user start hyprpolkitagent"
         "hyprctl setcursor 'Capitaine Cursors (Gruvbox)' 24"
-        "waybar"
         "hyprland-wallpapers"
+        "systemctl --user start hyprpolkitagent"
+        "waybar"
       ];
 
       general = {
@@ -58,7 +58,7 @@
         "super, q, killactive"
         "super, f, togglefloating"
         "super, p, pseudo"
-        "super, l, exec, hyprlock"
+        ", XF86AudioMedia, exec, hyprlock" # The Framework logo key (F12)
         "super control shift, q, exit"
 
         "super, l, movefocus, r"
@@ -96,17 +96,30 @@
         ", print, exec, hyprshot -m region"
       ];
 
-      bindm = [
-        "super, mouse:272, movewindow"
+      binde = [
+        "super alt, l, resizeactive, 10 0"
+        "super alt, h, resizeactive, -10 0"
+        "super alt, j, resizeactive, 0 10"
+        "super alt, k, resizeactive, 0 -10"
+      ];
+
+      bindl = [
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioNext, exec, playerctl next"
       ];
 
       bindel = [
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
         ", XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
         ", XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
-        ", XF86Print, exec, hyprshot -m region"
+      ];
+
+      bindm = [
+        "super, mouse:272, movewindow"
       ];
 
       gesture = [

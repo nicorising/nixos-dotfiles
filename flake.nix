@@ -12,6 +12,7 @@
 
   outputs =
     { nixpkgs, home-manager, ... }:
+
     {
       nixosConfigurations.nicotop = nixpkgs.lib.nixosSystem {
         modules = [
@@ -21,6 +22,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+
             home-manager.users.nico = import ./home.nix;
           }
         ];

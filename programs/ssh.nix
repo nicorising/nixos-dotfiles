@@ -18,6 +18,6 @@
       };
     };
 
-    programs.ssh.enableDefaultConfig = false;
+    enableDefaultConfig = false;
   };
 }

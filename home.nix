@@ -5,6 +5,8 @@
     programs/git.nix
     programs/hyprland.nix
     programs/hyprlock.nix
+    programs/hyprsunset.nix
+    programs/kitty.nix
     programs/librewolf.nix
     programs/neovim.nix
     programs/ssh.nix
@@ -32,14 +34,16 @@
       hyprsunset
       jq # CLI JSON processor
       keepassxc
-      kitty
+      kitty # Terminal emulator
       libreoffice
+      ncdu
       neofetch
       networkmanagerapplet
       nil # Nix language server
       nixfmt-rfc-style # Nix formatter
       nerd-fonts.noto
       pamixer
+      playerctl # CLI media player control
       python314
       ranger
       signal-desktop
@@ -52,6 +56,7 @@
       usbutils
       vlc
       waybar
+      wev # Wayland event viewer
       wofi
       zathura
 
