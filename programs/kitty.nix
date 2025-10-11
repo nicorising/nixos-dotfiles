@@ -8,9 +8,9 @@
     };
 
     settings = {
-      background_opacity = "0.9";
+      background_opacity = 0.9;
     };
 
-    theme = "Gruvbox Dark Hard";
+    themeFile = "gruvbox-dark-hard";
   };
 }
