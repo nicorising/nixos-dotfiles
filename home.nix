@@ -37,6 +37,7 @@
       nixfmt-rfc-style # Nix formatter
       nerd-fonts.noto # Nerd fonts
       pamixer
+      pavucontrol
       playerctl # CLI media player control
       python314 # Python 3.14
       ranger # TUI file explorer

@@ -5,7 +5,7 @@
     settings.profile = [
       {
         time = "6:00";
-        temperature = 6500;
+        temperature = 6650;
         gamma = 1.0;
       }
       {

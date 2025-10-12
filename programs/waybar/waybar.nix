@@ -7,19 +7,17 @@
         position = "top";
         layer = "top";
 
-        height = 28;
-        spacing = 4;
-
         modules-left = [
           "hyprland/workspaces"
+        ];
+
+        modules-center = [
           "custom/spotify"
         ];
 
         modules-right = [
           "pulseaudio"
           "backlight"
-          "cpu"
-          "memory"
           "battery"
           "network"
           "clock"
@@ -28,10 +26,8 @@
         "hyprland/workspaces" = {
           format = "{icon}";
           format-icons = {
-            empty = "";
             default = "";
-            active = "";
-            urgent = "";
+            empty = "";
           };
 
           persistent-workspaces = {
@@ -39,38 +35,45 @@
           };
         };
 
-        # Spotify
         "custom/spotify" = {
           exec = "playerctl --player=spotify metadata --format '{{ artist }} - {{ title }}'";
-          exec-if = "pgrep spotify";
+          exec-if = "pgrep spotify && [ \"$(playerctl -p spotify status 2>/dev/null)\" = \"Playing\" ]";
           interval = 1;
-          format = "󰝚  {}";
-          max-length = 64;
+
+          format = ''<span font="12" color="#83a598">󰝚</span>  {}'';
+          max-length = 50;
+          escape = true;
+
           on-click = "playerctl --player=spotify play-pause";
           on-click-right = "playerctl --player=spotify next";
           on-click-middle = "playerctl --player=spotify previous";
         };
 
-        # Volume
         pulseaudio = {
-          format = "{icon}  {volume}%";
-          format-muted = "󰸈  {volume}%";
+          format = ''<span font="12" color="#b8bb26">{icon}</span>  {volume}%'';
+          format-muted = ''<span font="12" color="#b8bb26">󰸈</span>  {volume}%'';
           format-icons = {
             default = [
               "󰕿"
               "󰖀"
+              "󰖀"
+              "󰖀"
+              "󰖀"
+              "󰖀"
+              "󰕾"
+              "󰕾"
+              "󰕾"
               "󰕾"
             ];
           };
+
           on-click = "pamixer -t";
           on-click-right = "pavucontrol";
-          scroll-step = 5;
+          scroll-step = 1;
         };
 
-        # Backlight
         backlight = {
-          device = "intel_backlight";
-          format = "{icon}  {percent}%";
+          format = ''<span font="11" color="#fabd2f">{icon}</span>  {percent}%'';
           format-icons = [
             "󰛩"
             "󱩎"
@@ -84,34 +87,25 @@
             "󱩖"
             "󰛨"
           ];
-          on-scroll-up = "brightnessctl set +5%";
-          on-scroll-down = "brightnessctl set 5%-";
-        };
 
-        # CPU
-        cpu = {
-          interval = 2;
-          format = "󰒆  {usage}%";
+          on-scroll-up = "brightnessctl set 1%+";
+          on-scroll-down = "brightnessctl set 1%-";
+          on-click = "hyprctl hyprsunset identity";
+
           tooltip = false;
         };
 
-        # Memory
-        memory = {
-          interval = 2;
-          format = "󰄦  {percentage}%";
-          tooltip-format = "{used:0.1f}G / {total:0.1f}G";
-        };
-
-        # Battery
         battery = {
-          interval = 30;
           states = {
             warning = 30;
             critical = 10;
           };
-          format = "{icon}  {capacity}%";
-          format-charging = "{icon}  {capacity}%";
-          format-full = "{icon}  {capacity}%";
+          interval = 1;
+
+          format = ''<span font="11" color="#83a598">{icon}</span>  {capacity}%'';
+          format-charging = ''<span font="11" color="#83a598">{icon}</span>  {capacity}%'';
+          format-warning = ''<span font="11" color="#fabd2f">{icon}</span>  {capacity}%'';
+          format-critical = ''<span font="11" color="#fb4934">{icon}</span>  {capacity}%'';
           format-icons = [
             "󰁺"
             "󰁻"
@@ -124,26 +118,12 @@
             "󰂂"
             "󰁹"
           ];
-          format-charging-icons = [
-            "󰢜"
-            "󰂆"
-            "󰂇"
-            "󰂈"
-            "󰢝"
-            "󰂉"
-            "󰢞"
-            "󰂊"
-            "󰂋"
-            "󰂅"
-          ];
         };
 
-        # Network
         network = {
-          interface = "wlp0s20f3";
-          interval = 2;
-          format-wifi = "{icon}  {essid}";
-          format-disconnected = "󰤮  Disconnected";
+          interval = 1;
+          format-wifi = "{icon}";
+          format-disconnected = "󰤮";
           format-icons = [
             "󰤟"
             "󰤢"
@@ -154,11 +134,10 @@
           on-click = "nm-connection-editor";
         };
 
-        # Clock
         clock = {
           interval = 1;
-          format = "󱑍  {:%H:%M}";
-          format-alt = "󱑍  {:%m-%d-%Y %H:%M:%S}";
+          format = ''<span font="11" color="#fe8019">󱑍</span>  {:%I:%M}'';
+          format-alt = ''<span font="11" color="#fe8019">󱑍</span>  {:%m-%d-%Y %H:%M:%S}'';
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "month";

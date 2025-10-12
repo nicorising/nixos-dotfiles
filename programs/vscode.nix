@@ -14,8 +14,8 @@
 
       userSettings = {
         editor = {
-          editor.formatOnSave = true;
-          fontFamily = "'NotoSansM NFM', 'monospace', monospace";
+          formatOnSave = true;
+          fontFamily = "'NotoSansM NFM', monospace";
         };
 
         files = {
