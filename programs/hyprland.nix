@@ -6,7 +6,6 @@
       exec-once = [
         "hyprctl setcursor 'Capitaine Cursors (Gruvbox)' 24"
         "hyprland-wallpapers"
-        "systemctl --user start hyprpolkitagent"
         "waybar"
       ];
 
@@ -62,7 +61,7 @@
         "super, q, killactive"
         "super, f, togglefloating"
         "super, p, pseudo"
-        ", XF86AudioMedia, exec, hyprlock" # The Framework logo key (F12)
+        ", XF86AudioMedia, exec, loginctl lock-session" # The Framework logo key (F12)
         "super control shift, q, exit"
 
         "super, l, movefocus, r"

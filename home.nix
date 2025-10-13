@@ -4,6 +4,7 @@
   imports = [
     programs/btop.nix
     programs/git.nix
+    programs/hypridle.nix
     programs/hyprland.nix
     programs/hyprlock.nix
     programs/hyprsunset.nix
@@ -24,7 +25,6 @@
       bluez-tools
       brightnessctl # CLI screen brightness control
       capitaine-cursors-themed # Cursor theme
-      hyprpolkitagent # Polkit authentication agent
       hyprshot # Screenshot tool
       jq # CLI JSON processor
       keepassxc # Password manager
@@ -86,8 +86,13 @@
   };
 
   programs.bash.enable = true;
+
+  services = {
+    hyprpolkitagent.enable = true;
+    udiskie.enable = true;
+  };
+
   fonts.fontconfig.enable = true;
-  services.udiskie.enable = true;
 
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
