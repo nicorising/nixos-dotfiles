@@ -97,7 +97,7 @@
 
         battery = {
           states = {
-            warning = 30;
+            warning = 20;
             critical = 10;
           };
           interval = 1;
@@ -136,7 +136,7 @@
 
         clock = {
           interval = 1;
-          format = ''<span font="11" color="#fe8019">󱑍</span>  {:%I:%M}'';
+          format = ''<span font="11" color="#fe8019">󱑍</span>  {:%H:%M}'';
           format-alt = ''<span font="11" color="#fe8019">󱑍</span>  {:%m-%d-%Y %H:%M:%S}'';
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {

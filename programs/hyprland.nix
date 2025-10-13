@@ -50,6 +50,10 @@
       xwayland.force_zero_scaling = true;
       misc.disable_hyprland_logo = true;
 
+      monitor = [
+        "DP-2, preferred, auto, 1, mirror, eDP-1"
+      ];
+
       bind = [
         "super, return, exec, kitty"
         "super, r, exec, ranger"

@@ -32,10 +32,11 @@
       libreoffice
       ncdu # Disk storage utility
       neofetch # System information display
+      nerd-fonts.noto # Nerd fonts
       networkmanagerapplet # GUI for advanced network settings
       nil # Nix language server
       nixfmt-rfc-style # Nix formatter
-      nerd-fonts.noto # Nerd fonts
+      nodejs # Node.js
       pamixer
       pavucontrol
       playerctl # CLI media player control
