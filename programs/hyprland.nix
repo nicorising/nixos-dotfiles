@@ -63,7 +63,6 @@
         "super, f, togglefloating"
         "super, p, pseudo"
         ", XF86AudioMedia, exec, loginctl lock-session" # The Framework logo key (F12)
-        "super control shift, q, exit"
 
         "super, l, movefocus, r"
         "super, h, movefocus, l"
