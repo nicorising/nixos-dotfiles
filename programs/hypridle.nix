@@ -3,20 +3,23 @@
     enable = true;
 
     settings = {
-      general.lock_cmd = "pidof hyprlock || hyprlock";
+      general = {
+        lock_cmd = "pidof hyprlock || hyprlock";
+        before_sleep_cmd = "loginctl lock-session";
+      };
 
       listener = [
         {
-          timeout = 10;
+          timeout = 240;
           on-timeout = "brightnessctl -s set 0";
           on-resume = "brightnessctl -r";
         }
         {
-          timeout = 20;
+          timeout = 300;
           on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 30;
+          timeout = 600;
           on-timeout = "systemctl suspend";
         }
       ];

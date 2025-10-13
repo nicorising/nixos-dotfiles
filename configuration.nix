@@ -79,5 +79,15 @@
 
   programs.hyprland.enable = true;
 
+  services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "hyprland";
+        user = "nico";
+      };
+    };
+  };
+
   system.stateVersion = "25.05";
 }

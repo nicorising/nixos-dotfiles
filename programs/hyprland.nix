@@ -4,6 +4,7 @@
 
     settings = {
       exec-once = [
+        "hyprlock" # Lock on start
         "hyprctl setcursor 'Capitaine Cursors (Gruvbox)' 24"
         "hyprland-wallpapers"
         "waybar"
