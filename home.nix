@@ -45,7 +45,8 @@
       signal-desktop
       slack
       socat # Data relay tool
-      spotify
+      spotify # Spotify
+      steam # Steam
       swww # Wallpaper manager
       tldr
       unzip # Unzip utility

@@ -72,6 +72,8 @@
     serviceConfig.Type = "simple";
   };
 
+  hardware.graphics.enable32Bit = true;
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
