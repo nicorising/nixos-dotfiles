@@ -92,7 +92,20 @@
     udiskie.enable = true;
   };
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = [
+        "NotoSerif NFP"
+      ];
+      sansSerif = [
+        "NotoSans NFP"
+      ];
+      monospace = [
+        "NotoSansM NFM"
+      ];
+    };
+  };
 
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 

@@ -21,6 +21,7 @@
           "battery"
           "network"
           "clock"
+          "group/power-menu"
         ];
 
         "hyprland/workspaces" = {
@@ -152,6 +153,40 @@
               today = "<span color='#fb4934'><b><u>{}</u></b></span>";
             };
           };
+        };
+
+        "group/power-menu" = {
+          "orientation" = "horizontal";
+
+          "drawer" = {
+            "transition-left-to-right" = false;
+            "transition-duration" = 500;
+            "children-class" = "power-menu-child";
+          };
+
+          "modules" = [
+            "custom/power"
+            "custom/lock"
+            "custom/reboot"
+          ];
+        };
+
+        "custom/power" = {
+          "format" = "";
+          "on-click" = "shutdown now";
+          "tooltip" = false;
+        };
+
+        "custom/lock" = {
+          "format" = "󰍁";
+          "on-click" = "hyprlock";
+          "tooltip" = false;
+        };
+
+        "custom/reboot" = {
+          "format" = "󰜉";
+          "on-click" = "reboot";
+          "tooltip" = false;
         };
       };
     };

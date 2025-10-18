@@ -24,16 +24,16 @@
     background: alpha(@bg, 0.9);
 }
 
-.modules-right {
-    padding-right: 4px;
-}
-
 #pulseaudio,
 #backlight,
 #battery,
 #network,
 #clock {
     padding: 0 8px;
+}
+
+#power-menu {
+    padding: 0 4px;
 }
 
 #workspaces button {
@@ -63,4 +63,23 @@
 
 #network {
     color: @purple;
+}
+
+#custom-power,
+#custom-lock,
+#custom-reboot {
+    padding: 0 4px;
+}
+
+#custom-power {
+    color: @red;
+}
+
+#custom-lock {
+    color: @green;
+}
+
+#custom-reboot {
+    color: @purple;
+    font-size: larger;
 }

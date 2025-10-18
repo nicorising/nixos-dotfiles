@@ -81,11 +81,12 @@
 
   services.greetd = {
     enable = true;
-    settings = {
+    settings = rec {
       initial_session = {
         command = "hyprland";
         user = "nico";
       };
+      default_session = initial_session;
     };
   };
 
