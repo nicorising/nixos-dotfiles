@@ -35,14 +35,14 @@
         {
           position = "0, 200";
           text = ''cmd[update:1000] echo "$(date +"%-I:%M")"'';
-          font_family = "NotoSansM NFM Cond ExtBd";
+          font_family = "NotoSans NFP Cond ExtBd";
           font_size = 128;
           color = "rgb(235, 219, 178)";
         }
         {
           position = "0, 300";
           text = ''cmd[update:1000] echo "$(date +"%A, %B %d")"'';
-          font_family = "NotoSansM NFM";
+          font_family = "NotoSans NFP";
           font_size = 24;
           color = "rgb(235, 219, 178)";
         }
