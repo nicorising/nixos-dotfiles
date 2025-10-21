@@ -12,6 +12,7 @@
     programs/librewolf.nix
     programs/neovim.nix
     programs/ssh.nix
+    programs/thunderbird.nix
     programs/vscode.nix
     programs/waybar/waybar.nix
   ];
