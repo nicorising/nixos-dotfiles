@@ -11,6 +11,7 @@
     programs/kitty.nix
     programs/librewolf.nix
     programs/neovim.nix
+    programs/nh.nix
     programs/ssh.nix
     programs/thunderbird.nix
     programs/vscode.nix

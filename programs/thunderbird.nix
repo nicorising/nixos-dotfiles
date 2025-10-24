@@ -10,16 +10,16 @@
         primary = true;
         address = "nico@nicorising.com";
         userName = "nico@nicorising.com";
-        realName = "Your Name";
+        realName = "Nico Rising";
 
         imap = {
-          host = "imap.nicorising.com";
+          host = "mail.nicorising.com";
           port = 993;
           tls.enable = true;
         };
 
         smtp = {
-          host = "smtp.nicorising.com";
+          host = "mail.nicorising.com";
           port = 465;
           tls.enable = true;
         };
