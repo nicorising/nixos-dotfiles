@@ -27,6 +27,7 @@
       bluez-tools
       brightnessctl # CLI screen brightness control
       capitaine-cursors-themed # Cursor theme
+      gcc # Compilers
       hyprshot # Screenshot tool
       jq # CLI JSON processor
       keepassxc # Password manager
@@ -41,6 +42,7 @@
       nodejs # Node.js
       pamixer
       pavucontrol
+      popsicle # USB flasher
       playerctl # CLI media player control
       python314 # Python 3.14
       ranger # TUI file explorer
@@ -53,6 +55,7 @@
       tldr
       unzip # Unzip utility
       usbutils # USB CLI tools
+      uv # Python package manager
       vlc # Media player
       waybar # Taskbar
       wev # Wayland event viewer

@@ -13,8 +13,6 @@
   networking.hostName = "nicotop";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "America/New_York";
-
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -33,6 +31,7 @@
     description = "Nico";
     extraGroups = [
       "audio"
+      "docker"
       "networkmanager"
       "wheel"
     ];
@@ -71,6 +70,12 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "simple";
   };
+
+  # Docker
+  virtualisation.docker.enable = true;
+
+  # Automatically set timezone from location
+  services.automatic-timezoned.enable = true;
 
   hardware.graphics.enable32Bit = true;
 
