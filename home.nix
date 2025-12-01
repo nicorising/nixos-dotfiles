@@ -7,7 +7,6 @@
     programs/hypridle.nix
     programs/hyprland.nix
     programs/hyprlock.nix
-    programs/hyprsunset.nix
     programs/kitty.nix
     programs/librewolf.nix
     programs/neovim.nix
@@ -27,6 +26,7 @@
       bluez-tools
       brightnessctl # CLI screen brightness control
       capitaine-cursors-themed # Cursor theme
+      clojure # Clojure
       gcc # Compilers
       hyprshot # Screenshot tool
       jq # CLI JSON processor
@@ -42,10 +42,12 @@
       nodejs # Node.js
       pamixer
       pavucontrol
-      popsicle # USB flasher
+      pgadmin4-desktopmode # PostgreSQL GUI
       playerctl # CLI media player control
+      popsicle # USB flasher
       python314 # Python 3.14
       ranger # TUI file explorer
+      ruff # Python linter/formatter
       signal-desktop
       slack
       socat # Data relay tool
@@ -56,6 +58,7 @@
       unzip # Unzip utility
       usbutils # USB CLI tools
       uv # Python package manager
+      v4l-utils # Video4Linux utilities
       vlc # Media player
       waybar # Taskbar
       wev # Wayland event viewer
@@ -73,6 +76,7 @@
 
     shellAliases = {
       grep = "grep --color=auto";
+      ssh = "kitten ssh"; # Fix terminfo issues when SSHing from kitty
     };
 
     # Copy over wallpapers

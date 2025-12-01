@@ -79,6 +79,8 @@
 
   hardware.graphics.enable32Bit = true;
 
+  programs.nix-ld.enable = true;
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;

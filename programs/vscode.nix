@@ -7,15 +7,19 @@
 
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
+        charliermarsh.ruff
+        esbenp.prettier-vscode
         jdinhlife.gruvbox
         jnoortheen.nix-ide
+        tamasfe.even-better-toml
         vscodevim.vim
       ];
 
       userSettings = {
         editor = {
-          formatOnSave = true;
           fontFamily = "'NotoSansM NFM', monospace";
+          formatOnSave = true;
+          codeActionsOnSave."source.fixAll" = "explicit";
         };
 
         files = {
@@ -38,6 +42,22 @@
               "100"
             ];
           };
+        };
+
+        "[python]" = {
+          editor.defaultFormatter = "charliermarsh.ruff";
+        };
+        "[javascript]" = {
+          editor.defaultFormatter = "esbenp.prettier-vscode";
+        };
+        "[typescript]" = {
+          editor.defaultFormatter = "esbenp.prettier-vscode";
+        };
+        "[javascriptreact]" = {
+          editor.defaultFormatter = "esbenp.prettier-vscode";
+        };
+        "[typescriptreact]" = {
+          editor.defaultFormatter = "esbenp.prettier-vscode";
         };
       };
     };
