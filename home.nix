@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+
     programs/btop.nix
     programs/git.nix
     programs/hypridle.nix
@@ -9,8 +11,8 @@
     programs/hyprlock.nix
     programs/kitty.nix
     programs/librewolf.nix
-    programs/neovim.nix
     programs/nh.nix
+    programs/nixvim.nix
     programs/ssh.nix
     programs/thunderbird.nix
     programs/vscode.nix
