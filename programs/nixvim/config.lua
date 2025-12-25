@@ -49,3 +49,9 @@ end, {})
 vim.cmd('cnoreabbrev q Q')
 vim.cmd('cnoreabbrev q! Q!')
 vim.cmd('cnoreabbrev wq WQ')
+
+-- Add border to LSP hover box
+
+vim.keymap.set('n', 'K', function()
+    vim.lsp.buf.hover({ border = 'rounded' })
+end)
