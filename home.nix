@@ -10,7 +10,7 @@
     programs/kitty.nix
     programs/librewolf.nix
     programs/nh.nix
-    programs/nixvim.nix
+    programs/nixvim/nixvim.nix
     programs/ssh.nix
     programs/thunderbird.nix
     programs/vscode.nix
@@ -29,8 +29,10 @@
       clojure # Clojure
       discord
       extremetuxracer
+      fd # File finder
       gcc # Compilers
       hyprshot # Screenshot tool
+      inotify-tools # Tools for inotify
       jq # CLI JSON processor
       keepassxc # Password manager
       killall # Process killing command
@@ -59,7 +61,8 @@
       steam # Steam
       swww # Wallpaper manager
       texlive.combined.scheme-full # LaTeX
-      tldr
+      tldr # Quick manuals
+      tree-sitter # Parser generator tool
       unzip # Unzip utility
       usbutils # USB CLI tools
       uv # Python package manager
@@ -67,6 +70,7 @@
       vlc # Media player
       waybar # Taskbar
       wev # Wayland event viewer
+      wl-clipboard # Wayland clipboard CLI
       wofi
       zathura # PDF viewer
 

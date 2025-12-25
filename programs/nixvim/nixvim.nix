@@ -5,7 +5,7 @@
     viAlias = true;
     vimAlias = true;
     enableMan = false; # Fix LSP package bug
-    extraConfigLuaFile = ./nvim/config.lua;
+    extraConfigLua = builtins.readFile ./config.lua;
 
     opts = {
       number = true;
@@ -13,8 +13,7 @@
       expandtab = true;
       shiftwidth = 4;
       tabstop = 4;
-      termguicolors = true;
-      background = "dark";
+      clipboard = "unnamedplus";
     };
 
     diagnostic.settings.virtual_text = true;
@@ -30,6 +29,8 @@
         enable = true;
         servers = {
           pyright.enable = true;
+          nil_ls.enable = true;
+          lua_ls.enable = true;
           clojure_lsp.enable = true;
         };
       };
@@ -38,6 +39,8 @@
         enable = true;
         settings.ensure_installed = [
           "python"
+          "nix"
+          "lua"
           "clojure"
         ];
       };
@@ -45,9 +48,13 @@
       # Formatter
       conform-nvim = {
         enable = true;
+
         settings = {
           format_on_save.lsp_fallback = true;
-          formatters_by_ft.python = [ "ruff_format" ];
+          formatters_by_ft = {
+            python = [ "ruff_format" ];
+            nix = [ "nixfmt" ];
+          };
         };
       };
 
@@ -86,6 +93,7 @@
         enable = true;
 
         settings = {
+          log_level = "warn";
           close_if_last_window = true;
 
           filesystem = {
@@ -105,17 +113,28 @@
         enable = true;
 
         settings.options = {
+          numbers = "ordinal";
           diagnostics = "nvim_lsp";
 
           offsets = [
             {
               filetype = "neo-tree";
-              text = "Explorer";
-              highlight = "Directory";
             }
           ];
         };
       };
+
+      toggleterm = {
+        enable = true;
+        settings = {
+          start_in_insert = true;
+          direction = "vertical";
+          size = 60;
+        };
+      };
+
+      # Lua for Neovim
+      lazydev.enable = true;
     };
 
     colorschemes.gruvbox = {
@@ -123,7 +142,98 @@
 
       settings = {
         contrast_dark = "dark";
+        transparent_mode = true;
       };
     };
+
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>Neotree toggle<CR>";
+        options.desc = "Toggle explorer";
+      }
+
+      {
+        mode = "n";
+        key = "<leader>1";
+        action = "<cmd>BufferLineGoToBuffer 1<CR>";
+        options.desc = "Buffer 1";
+      }
+      {
+        mode = "n";
+        key = "<leader>2";
+        action = "<cmd>BufferLineGoToBuffer 2<CR>";
+        options.desc = "Buffer 2";
+      }
+      {
+        mode = "n";
+        key = "<leader>3";
+        action = "<cmd>BufferLineGoToBuffer 3<CR>";
+        options.desc = "Buffer 3";
+      }
+      {
+        mode = "n";
+        key = "<leader>4";
+        action = "<cmd>BufferLineGoToBuffer 4<CR>";
+        options.desc = "Buffer 4";
+      }
+      {
+        mode = "n";
+        key = "<leader>5";
+        action = "<cmd>BufferLineGoToBuffer 5<CR>";
+        options.desc = "Buffer 5";
+      }
+      {
+        mode = "n";
+        key = "<leader>6";
+        action = "<cmd>BufferLineGoToBuffer 6<CR>";
+        options.desc = "Buffer 6";
+      }
+      {
+        mode = "n";
+        key = "<leader>7";
+        action = "<cmd>BufferLineGoToBuffer 7<CR>";
+        options.desc = "Buffer 7";
+      }
+      {
+        mode = "n";
+        key = "<leader>8";
+        action = "<cmd>BufferLineGoToBuffer 8<CR>";
+        options.desc = "Buffer 8";
+      }
+      {
+        mode = "n";
+        key = "<leader>9";
+        action = "<cmd>BufferLineGoToBuffer 9<CR>";
+        options.desc = "Buffer 9";
+      }
+
+      {
+        mode = "n";
+        key = "<leader><";
+        action = "<cmd>BufferLineMovePrev<CR>";
+        options.desc = "Move buffer left";
+      }
+      {
+        mode = "n";
+        key = "<leader>>";
+        action = "<cmd>BufferLineMoveNext<CR>";
+        options.desc = "Move buffer right";
+      }
+
+      {
+        mode = "n";
+        key = "<leader>t";
+        action = "<cmd>ToggleTerm direction=vertical size=60<CR>";
+        options.desc = "Toggle terminal";
+      }
+      {
+        mode = "t";
+        key = "<Esc>";
+        action = "<C-\\><C-n>";
+        options.desc = "Exit terminal mode";
+      }
+    ];
   };
 }
