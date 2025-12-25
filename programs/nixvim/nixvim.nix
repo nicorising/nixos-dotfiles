@@ -231,6 +231,18 @@
         action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 9<CR>";
         options.desc = "Go to buffer 9";
       }
+      {
+        mode = "n";
+        key = "<leader><";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineMovePrev<CR>";
+        options.desc = "Move buffer left";
+      }
+      {
+        mode = "n";
+        key = "<leader>>";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineMoveNext<CR>";
+        options.desc = "Move buffer right";
+      }
 
       # Terminal
       {
