@@ -1,9 +1,7 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-
     programs/btop.nix
     programs/git.nix
     programs/hypridle.nix
@@ -29,6 +27,8 @@
       brightnessctl # CLI screen brightness control
       capitaine-cursors-themed # Cursor theme
       clojure # Clojure
+      discord
+      extremetuxracer
       gcc # Compilers
       hyprshot # Screenshot tool
       jq # CLI JSON processor
@@ -47,8 +47,10 @@
       pgadmin4-desktopmode # PostgreSQL GUI
       playerctl # CLI media player control
       popsicle # USB flasher
+      prismlauncher
       python314 # Python 3.14
       ranger # TUI file explorer
+      ripgrep # Search tool
       ruff # Python linter/formatter
       signal-desktop
       slack
@@ -56,6 +58,7 @@
       spotify # Spotify
       steam # Steam
       swww # Wallpaper manager
+      texlive.combined.scheme-full # LaTeX
       tldr
       unzip # Unzip utility
       usbutils # USB CLI tools

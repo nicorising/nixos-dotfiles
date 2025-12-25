@@ -1,5 +1,5 @@
 {
-  description = "My laptop's NixOS configuration files.";
+  description = "My laptop's NixOS configuration files";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -16,7 +16,12 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      nixvim,
+      ...
+    }:
 
     {
       nixosConfigurations.nicotop = nixpkgs.lib.nixosSystem {
@@ -28,7 +33,12 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home-manager.users.nico = import ./home.nix;
+            home-manager.users.nico = {
+              imports = [
+                ./home.nix
+                nixvim.homeModules.nixvim
+              ];
+            };
           }
         ];
       };

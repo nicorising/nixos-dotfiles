@@ -50,7 +50,15 @@
       xwayland.force_zero_scaling = true;
       misc.disable_hyprland_logo = true;
 
+      env = [
+        "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
+        "QT_ENABLE_HIGHDPI_SCALING, 1"
+        "XCURSOR_SIZE, 36"
+        "ELECTRON_OZONE_PLATFORM_HINT, auto"
+      ];
+
       monitor = [
+        "eDP-1, preferred, auto, 1.666"
         "DP-2, preferred, auto, 1, mirror, eDP-1"
       ];
 
