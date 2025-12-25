@@ -77,14 +77,9 @@
       telescope = {
         enable = true;
         extensions.fzf-native.enable = true;
-        settings.pickers.find_files.hidden = true;
-
-        keymaps = {
-          "<leader>ff" = "find_files";
-          "<leader>fg" = "live_grep";
-          "<leader>fb" = "buffers";
-          "<leader>fr" = "oldfiles";
-          "<leader>fs" = "lsp_document_symbols";
+        settings.pickers.find_files = {
+          hidden = true;
+          no_ignore = true;
         };
       };
 
@@ -147,6 +142,7 @@
     };
 
     keymaps = [
+      # Neo-tree
       {
         mode = "n";
         key = "<leader>e";
@@ -154,74 +150,89 @@
         options.desc = "Toggle explorer";
       }
 
+      # Telescope
+      {
+        mode = "n";
+        key = "<leader>ff";
+        action = "<cmd>lua FocusEditor()<CR><cmd>Telescope find_files<CR>";
+        options.desc = "Find files";
+      }
+      {
+        mode = "n";
+        key = "<leader>fg";
+        action = "<cmd>lua FocusEditor()<CR><cmd>Telescope live_grep<CR>";
+        options.desc = "Live grep";
+      }
+      {
+        mode = "n";
+        key = "<leader>fr";
+        action = "<cmd>lua FocusEditor()<CR><cmd>Telescope oldfiles<CR>";
+        options.desc = "Recent files";
+      }
+      {
+        mode = "n";
+        key = "<leader>fs";
+        action = "<cmd>lua FocusEditor()<CR><cmd>Telescope lsp_document_symbols<CR>";
+        options.desc = "LSP symbols";
+      }
+
+      # Buffers
       {
         mode = "n";
         key = "<leader>1";
-        action = "<cmd>BufferLineGoToBuffer 1<CR>";
-        options.desc = "Buffer 1";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 1<CR>";
+        options.desc = "Go to buffer 1";
       }
       {
         mode = "n";
         key = "<leader>2";
-        action = "<cmd>BufferLineGoToBuffer 2<CR>";
-        options.desc = "Buffer 2";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 2<CR>";
+        options.desc = "Go to buffer 2";
       }
       {
         mode = "n";
         key = "<leader>3";
-        action = "<cmd>BufferLineGoToBuffer 3<CR>";
-        options.desc = "Buffer 3";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 3<CR>";
+        options.desc = "Go to buffer 3";
       }
       {
         mode = "n";
         key = "<leader>4";
-        action = "<cmd>BufferLineGoToBuffer 4<CR>";
-        options.desc = "Buffer 4";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 4<CR>";
+        options.desc = "Go to buffer 4";
       }
       {
         mode = "n";
         key = "<leader>5";
-        action = "<cmd>BufferLineGoToBuffer 5<CR>";
-        options.desc = "Buffer 5";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 5<CR>";
+        options.desc = "Go to buffer 5";
       }
       {
         mode = "n";
         key = "<leader>6";
-        action = "<cmd>BufferLineGoToBuffer 6<CR>";
-        options.desc = "Buffer 6";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 6<CR>";
+        options.desc = "Go to buffer 6";
       }
       {
         mode = "n";
         key = "<leader>7";
-        action = "<cmd>BufferLineGoToBuffer 7<CR>";
-        options.desc = "Buffer 7";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 7<CR>";
+        options.desc = "Go to buffer 7";
       }
       {
         mode = "n";
         key = "<leader>8";
-        action = "<cmd>BufferLineGoToBuffer 8<CR>";
-        options.desc = "Buffer 8";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 8<CR>";
+        options.desc = "Go to buffer 8";
       }
       {
         mode = "n";
         key = "<leader>9";
-        action = "<cmd>BufferLineGoToBuffer 9<CR>";
-        options.desc = "Buffer 9";
+        action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineGoToBuffer 9<CR>";
+        options.desc = "Go to buffer 9";
       }
 
-      {
-        mode = "n";
-        key = "<leader><";
-        action = "<cmd>BufferLineMovePrev<CR>";
-        options.desc = "Move buffer left";
-      }
-      {
-        mode = "n";
-        key = "<leader>>";
-        action = "<cmd>BufferLineMoveNext<CR>";
-        options.desc = "Move buffer right";
-      }
-
+      # Terminal
       {
         mode = "n";
         key = "<leader>t";

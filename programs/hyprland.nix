@@ -57,6 +57,11 @@
         "ELECTRON_OZONE_PLATFORM_HINT, auto"
       ];
 
+      windowrulev2 = [
+        "float, class:^(floating)$"
+        "size 800 600, class:^(floating)$"
+      ];
+
       monitor = [
         "eDP-1, preferred, auto, 1.666"
         "DP-2, preferred, auto, 1, mirror, eDP-1"
@@ -66,6 +71,8 @@
         "super, return, exec, kitty"
         "super, r, exec, ranger"
         "super, w, exec, librewolf"
+        "super, s, exec, signal-desktop"
+        "super, n, exec, kitty --class floating --hold neofetch"
         "super, space, exec, wofi --show drun"
         "super, q, killactive"
         "super, f, togglefloating"
