@@ -119,11 +119,14 @@ in
 
     mako = {
       enable = true;
-      backgroundColor = "#282828";
-      textColor = "#ebdbb2";
-      borderColor = "#83a598";
-      borderRadius = 5;
-      defaultTimeout = 5000;
+
+      settings = {
+        default-timeout = 5000;
+        border-radius = 5;
+        border-color = "#83a598";
+        text-color = "#ebdbb2";
+        background-color = "#282828";
+      };
     };
   };
 
