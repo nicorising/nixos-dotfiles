@@ -19,7 +19,7 @@ while IFS= read -r line; do
     fi
 done <<< "$paired"
 
-chosen=$(printf "%b" "$menu" | grep -v '^$' | cut -d '|' -f 2 | grep -v '^$' | fuzzel --dmenu --prompt "Bluetooth " 2>/dev/null)
+chosen=$(printf "%b" "$menu" | grep -v '^$' | cut -d '|' -f 2 | grep -v '^$' | fuzzel --dmenu 2>/dev/null)
 
 if [ -z "$chosen" ]; then
     exit 0
