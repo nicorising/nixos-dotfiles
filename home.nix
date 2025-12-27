@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  writeScript = name: pkgs.writeShellScriptBin name (builtins.readFile ./scripts/${name}.sh);
+in
 {
   imports = [
     programs/btop.nix
@@ -55,6 +58,7 @@
       ripgrep # Search tool
       ruff # Python linter/formatter
       signal-desktop
+      sl # Steam locomotive
       slack
       socat # Data relay tool
       spotify # Spotify
@@ -63,6 +67,7 @@
       texlive.combined.scheme-full # LaTeX
       tldr # Quick manuals
       tree-sitter # Parser generator tool
+      qFlipper # Flipper Zero GUI
       unzip # Unzip utility
       usbutils # USB CLI tools
       uv # Python package manager
@@ -75,7 +80,8 @@
       zathura # PDF viewer
 
       # Add custom scripts
-      (writeShellScriptBin "hyprland-wallpapers" (builtins.readFile ./scripts/hyprland-wallpapers.sh))
+      (writeScript "bluetooth-menu")
+      (writeScript "hyprland-wallpapers")
     ];
 
     sessionVariables = {

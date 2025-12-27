@@ -19,6 +19,7 @@
           "pulseaudio"
           "backlight"
           "battery"
+          "bluetooth"
           "network"
           "clock"
           "group/power-menu"
@@ -119,6 +120,16 @@
             "󰂂"
             "󰁹"
           ];
+        };
+
+        bluetooth = {
+          format = "<span font='12' color='#83a598'>󰂯</span>";
+          format-connected = "<span font='12' color='#83a598'>󰂱</span>";
+          format-disabled = "<span font='12' color='#928374'>󰂲</span>";
+          tooltip-format = "{controller_alias}\t{controller_address}";
+          tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+          on-click = "bluetooth-menu";
         };
 
         network = {

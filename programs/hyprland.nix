@@ -60,6 +60,11 @@
       windowrulev2 = [
         "float, class:^(floating)$"
         "size 800 600, class:^(floating)$"
+
+        "float, class:^(nm-connection-editor)$"
+        "size 800 600, class:^(nm-connection-editor)$"
+        "float, class:^(blueman-manager)$"
+        "size 800 600, class:^(blueman-manager)$"
       ];
 
       monitor = [
