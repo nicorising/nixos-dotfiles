@@ -27,6 +27,7 @@
 #pulseaudio,
 #backlight,
 #battery,
+#bluetooth,
 #network,
 #clock {
     padding: 0 8px;

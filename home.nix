@@ -18,6 +18,7 @@ in
     programs/thunderbird.nix
     programs/vscode.nix
     programs/waybar/waybar.nix
+    programs/wofi/wofi.nix
   ];
 
   home = {
@@ -39,6 +40,7 @@ in
       jq # CLI JSON processor
       keepassxc # Password manager
       killall # Process killing command
+      libnotify # Notification sender
       libreoffice
       ncdu # Disk storage utility
       neofetch # System information display
@@ -76,7 +78,6 @@ in
       waybar # Taskbar
       wev # Wayland event viewer
       wl-clipboard # Wayland clipboard CLI
-      wofi
       zathura # PDF viewer
 
       # Add custom scripts
@@ -115,6 +116,15 @@ in
   services = {
     hyprpolkitagent.enable = true;
     udiskie.enable = true;
+
+    mako = {
+      enable = true;
+      backgroundColor = "#282828";
+      textColor = "#ebdbb2";
+      borderColor = "#83a598";
+      borderRadius = 5;
+      defaultTimeout = 5000;
+    };
   };
 
   fonts.fontconfig = {

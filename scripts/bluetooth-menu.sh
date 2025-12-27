@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-paired=$(bluetoothctl devices Paired | cut -d ' ' -f 2-)
+paired=$(bluetoothctl devices Paired | grep "^Device ")
 
 if [ -z "$paired" ]; then
     notify-send "Bluetooth" "No paired devices"
@@ -9,29 +9,34 @@ fi
 
 menu=""
 while IFS= read -r line; do
-    mac=$(echo "$line" | cut -d ' ' -f 1)
-    name=$(echo "$line" | cut -d ' ' -f 2-)
+    mac=$(echo "$line" | awk '{print $2}')
+    name=$(echo "$line" | cut -d ' ' -f 3-)
     
-    if bluetoothctl info "$mac" | grep -q "Connected: yes"; then
-        menu+="󰂱  $name (connected)\n"
+    if bluetoothctl info "$mac" 2>/dev/null | grep -q "Connected: yes"; then
+        menu+="$mac|$name (connected)\n"
     else
-        menu+="󰂯  $name\n"
+        menu+="$mac|$name\n"
     fi
 done <<< "$paired"
 
-chosen=$(echo -e "$menu" | wofi --dmenu --prompt "Bluetooth" --width 300 --height 200)
+chosen=$(echo -e "$menu" | cut -d '|' -f 2 | wofi --dmenu --prompt "Bluetooth" --width 300 --height 200 2>/dev/null)
 
 if [ -z "$chosen" ]; then
     exit 0
 fi
 
-name=$(echo "$chosen" | sed 's/^�[±-]  //' | sed 's/ (connected)$//')
-mac=$(bluetoothctl devices Paired | grep "$name" | cut -d ' ' -f 2)
+name_clean=$(echo "$chosen" | sed 's/ (connected)$//')
+mac=$(echo -e "$menu" | grep "|$name_clean" | cut -d '|' -f 1)
+
+if [ -z "$mac" ]; then
+    notify-send "Bluetooth" "Could not find device"
+    exit 1
+fi
 
 if echo "$chosen" | grep -q "(connected)"; then
     bluetoothctl disconnect "$mac"
-    notify-send "Bluetooth" "Disconnected from $name"
+    notify-send "Bluetooth" "Disconnected from $name_clean"
 else
     bluetoothctl connect "$mac"
-    notify-send "Bluetooth" "Connecting to $name..."
+    notify-send "Bluetooth" "Connecting to $name_clean..."
 fi
