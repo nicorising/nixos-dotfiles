@@ -7,7 +7,7 @@
 
       colors = {
         background = "282828ff";
-        prompti = "b8bb26ff";
+        prompt = "b8bb26ff";
         input = "b8bb26ff";
         text = "ebdbb2ff";
         selection = "3c3836ff";

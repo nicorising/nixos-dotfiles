@@ -64,7 +64,6 @@ in
       slack
       socat # Data relay tool
       spotify # Spotify
-      spotify-tui # Spotify TUI
       steam # Steam
       swww # Wallpaper manager
       texlive.combined.scheme-full # LaTeX
@@ -84,7 +83,6 @@ in
       # Add custom scripts
       (addScript "bluetooth-menu")
       (addScript "hyprland-wallpapers")
-      (addScript "spotify-search")
     ];
 
     sessionVariables = {
