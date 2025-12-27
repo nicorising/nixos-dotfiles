@@ -15,6 +15,8 @@
         gaps_in = 8;
         gaps_out = 16;
         resize_on_border = true;
+        "col.active_border" = "rgb(83a598)";
+        "col.inactive_border" = "rgb(3c3836)";
       };
 
       dwindle = {
@@ -60,11 +62,6 @@
       windowrulev2 = [
         "float, class:^(floating)$"
         "size 800 600, class:^(floating)$"
-
-        "float, class:^(nm-connection-editor)$"
-        "size 800 600, class:^(nm-connection-editor)$"
-        "float, class:^(blueman-manager)$"
-        "size 800 600, class:^(blueman-manager)$"
       ];
 
       monitor = [
@@ -78,7 +75,7 @@
         "super, w, exec, librewolf"
         "super, s, exec, signal-desktop"
         "super, n, exec, kitty --class floating --hold neofetch"
-        "super, space, exec, wofi --show drun"
+        "super, space, exec, fuzzel"
         "super, q, killactive"
         "super, f, togglefloating"
         "super, p, pseudo"

@@ -6,6 +6,7 @@ in
 {
   imports = [
     programs/btop.nix
+    programs/fuzzel.nix
     programs/git.nix
     programs/hypridle.nix
     programs/hyprland.nix
@@ -18,7 +19,6 @@ in
     programs/thunderbird.nix
     programs/vscode.nix
     programs/waybar/waybar.nix
-    programs/wofi/wofi.nix
   ];
 
   home = {
@@ -122,7 +122,7 @@ in
 
       settings = {
         default-timeout = 5000;
-        border-radius = 5;
+        border-radius = 4;
         border-color = "#83a598";
         text-color = "#ebdbb2";
         background-color = "#282828";
