@@ -15,6 +15,7 @@ in
     programs/librewolf.nix
     programs/nh.nix
     programs/nixvim/nixvim.nix
+    programs/ranger.nix
     programs/ssh.nix
     programs/thunderbird.nix
     programs/vscode.nix
@@ -56,7 +57,6 @@ in
       popsicle # USB flasher
       prismlauncher
       python314 # Python 3.14
-      ranger # TUI file explorer
       ripgrep # Search tool
       ruff # Python linter/formatter
       signal-desktop
