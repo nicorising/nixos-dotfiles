@@ -34,7 +34,7 @@
 }
 
 #power-menu {
-    padding: 0 6px 0 4px;
+    padding: 0 6px 0 2px;
 }
 
 #workspaces button {
@@ -78,7 +78,7 @@
 #custom-power,
 #custom-lock,
 #custom-reboot {
-    padding: 0 4px;
+    padding: 0 6px;
 }
 
 #custom-power {

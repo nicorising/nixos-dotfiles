@@ -186,7 +186,7 @@
 
         "tray" = {
           icon-size = 14;
-          spacing = 8;
+          spacing = 10;
         };
 
         "group/power-menu" = {
