@@ -36,6 +36,7 @@
         enable = true;
         servers = {
           clojure_lsp.enable = true;
+          texlab.enable = true;
           lua_ls.enable = true;
           nil_ls.enable = true;
           pyright.enable = true;
@@ -145,6 +146,8 @@
       # LaTeX
       vimtex = {
         enable = true;
+        texlivePackage = null;
+
         settings = {
           view_method = "zathura";
           compiler_method = "latexmk";
@@ -318,14 +321,6 @@
         key = "<leader>gr";
         action = "<cmd>Gitsigns reset_hunk<CR>";
         options.desc = "Reset Git hunk";
-      }
-
-      # LaTeX
-      {
-        mode = "n";
-        key = "<leader>ll";
-        action = "<cmd>VimtexCompile<CR>";
-        options.desc = "Compile LaTeX";
       }
     ];
   };

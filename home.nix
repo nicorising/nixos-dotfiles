@@ -42,7 +42,6 @@ in
       jq # CLI JSON processor
       keepassxc # Password manager
       killall # Process killing command
-      latexmk # LaTeX builder
       libnotify # Notification sender
       libreoffice
       ncdu # Disk storage utility
@@ -68,7 +67,7 @@ in
       spotify # Spotify
       steam # Steam
       swww # Wallpaper manager
-      texlive.combined.scheme-full # LaTeX
+      texliveFull # LaTeX
       tldr # Quick manuals
       tree-sitter # Parser generator tool
       qFlipper # Flipper Zero GUI
