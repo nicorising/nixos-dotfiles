@@ -135,6 +135,12 @@
         };
       };
 
+      # Easy commenting/uncommenting
+      comment.enable = true;
+
+      # Git modifications in the gutter
+      gitsigns.enable = true;
+
       # Lua for Neovim
       lazydev.enable = true;
     };
@@ -288,6 +294,20 @@
         key = "<Esc>";
         action = "<C-\\><C-n>";
         options.desc = "Exit terminal mode";
+      }
+
+      # Git
+      {
+        mode = "n";
+        key = "<leader>gp";
+        action = "<cmd>Gitsigns preview_hunk<CR>";
+        options.desc = "Preview Git hunk";
+      }
+      {
+        mode = "n";
+        key = "<leader>gr";
+        action = "<cmd>Gitsigns reset_hunk<CR>";
+        options.desc = "Reset Git hunk";
       }
     ];
   };
