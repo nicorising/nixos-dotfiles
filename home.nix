@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  writeScript = name: pkgs.writeShellScriptBin name (builtins.readFile ./scripts/${name}.sh);
+  addScript = name: pkgs.writeShellScriptBin name (builtins.readFile ./scripts/${name}.sh);
 in
 {
   imports = [
@@ -64,6 +64,7 @@ in
       slack
       socat # Data relay tool
       spotify # Spotify
+      spotify-tui # Spotify TUI
       steam # Steam
       swww # Wallpaper manager
       texlive.combined.scheme-full # LaTeX
@@ -81,8 +82,9 @@ in
       zathura # PDF viewer
 
       # Add custom scripts
-      (writeScript "bluetooth-menu")
-      (writeScript "hyprland-wallpapers")
+      (addScript "bluetooth-menu")
+      (addScript "hyprland-wallpapers")
+      (addScript "spotify-search")
     ];
 
     sessionVariables = {

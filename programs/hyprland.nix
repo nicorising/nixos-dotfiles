@@ -62,6 +62,10 @@
       windowrulev2 = [
         "float, class:^(floating)$"
         "size 800 600, class:^(floating)$"
+
+        "float, class:^(neofetch)$"
+        "center, class:^(neofetch)$"
+        "size 850 400, class:^(neofetch)$"
       ];
 
       monitor = [
@@ -74,7 +78,7 @@
         "super, r, exec, ranger"
         "super, w, exec, librewolf"
         "super, s, exec, signal-desktop"
-        "super, n, exec, kitty --class floating --hold neofetch"
+        "super, n, exec, kitty --class neofetch -e sh -c 'neofetch | head -n -3; read -n 1'"
         "super, space, exec, fuzzel"
         "super, q, killactive"
         "super, f, togglefloating"
