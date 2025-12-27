@@ -16,12 +16,13 @@
         ];
 
         modules-right = [
+          "bluetooth"
+          "network"
           "pulseaudio"
           "backlight"
           "battery"
-          "bluetooth"
-          "network"
           "clock"
+          "group/tray-drawer"
           "group/power-menu"
         ];
 
@@ -49,6 +50,30 @@
           on-click = "playerctl --player=spotify play-pause";
           on-click-right = "playerctl --player=spotify next";
           on-click-middle = "playerctl --player=spotify previous";
+        };
+
+        bluetooth = {
+          format = "<span font='12' color='#83a598'>󰂯</span>";
+          format-connected = "<span font='12' color='#83a598'>󰂱</span>";
+          format-disabled = "<span font='12' color='#928374'>󰂲</span>";
+          tooltip-format = "{controller_alias}\t{controller_address}";
+          tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+          on-click = "bluetooth-menu";
+        };
+
+        network = {
+          interval = 1;
+          format-wifi = "{icon}";
+          format-disconnected = "󰤮";
+          format-icons = [
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
+          tooltip-format = "{ifname}: {ipaddr}/{cidr}\nSignal: {signalStrength}%";
+          on-click = "nm-connection-editor";
         };
 
         pulseaudio = {
@@ -103,9 +128,8 @@
             critical = 10;
           };
           interval = 1;
-
-          format = ''<span font="11" color="#83a598">{icon}</span>  {capacity}%'';
-          format-charging = ''<span font="11" color="#83a598">{icon}</span>  {capacity}%'';
+          format = ''<span font="11" color="#8ec07c">{icon}</span>  {capacity}%'';
+          format-charging = ''<span font="11" color="#8ec07c">{icon}</span>  {capacity}%'';
           format-warning = ''<span font="11" color="#fabd2f">{icon}</span>  {capacity}%'';
           format-critical = ''<span font="11" color="#fb4934">{icon}</span>  {capacity}%'';
           format-icons = [
@@ -120,30 +144,6 @@
             "󰂂"
             "󰁹"
           ];
-        };
-
-        bluetooth = {
-          format = "<span font='12' color='#83a598'>󰂯</span>";
-          format-connected = "<span font='12' color='#83a598'>󰂱</span>";
-          format-disabled = "<span font='12' color='#928374'>󰂲</span>";
-          tooltip-format = "{controller_alias}\t{controller_address}";
-          tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
-          tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
-          on-click = "bluetooth-menu";
-        };
-
-        network = {
-          interval = 1;
-          format-wifi = "{icon}";
-          format-disconnected = "󰤮";
-          format-icons = [
-            "󰤟"
-            "󰤢"
-            "󰤥"
-            "󰤨"
-          ];
-          tooltip-format = "{ifname}: {ipaddr}/{cidr}\nSignal: {signalStrength}%";
-          on-click = "nm-connection-editor";
         };
 
         clock = {
@@ -164,6 +164,29 @@
               today = "<span color='#fb4934'><b><u>{}</u></b></span>";
             };
           };
+        };
+
+        "group/tray-drawer" = {
+          orientation = "horizontal";
+          drawer = {
+            transition-left-to-right = false;
+            transition-duration = 500;
+            children-class = "tray-child";
+          };
+          modules = [
+            "custom/tray-icon"
+            "tray"
+          ];
+        };
+
+        "custom/tray-icon" = {
+          format = "󰀻";
+          tooltip = false;
+        };
+
+        "tray" = {
+          icon-size = 14;
+          spacing = 8;
         };
 
         "group/power-menu" = {

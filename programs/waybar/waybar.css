@@ -34,7 +34,7 @@
 }
 
 #power-menu {
-    padding: 0 4px;
+    padding: 0 6px 0 4px;
 }
 
 #workspaces button {
@@ -64,6 +64,15 @@
 
 #network {
     color: @purple;
+}
+
+#custom-tray-icon,
+#tray {
+    padding: 0 6px;
+}
+
+#custom-tray-icon {
+    color: @fg
 }
 
 #custom-power,

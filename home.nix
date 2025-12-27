@@ -115,7 +115,12 @@ in
 
   services = {
     hyprpolkitagent.enable = true;
-    udiskie.enable = true;
+
+    udiskie = {
+      enable = true;
+      notify = true;
+      tray = "always";
+    };
 
     mako = {
       enable = true;
