@@ -20,6 +20,7 @@ in
     programs/thunderbird.nix
     programs/vscode.nix
     programs/waybar/waybar.nix
+    programs/zathura.nix
   ];
 
   home = {
@@ -41,6 +42,7 @@ in
       jq # CLI JSON processor
       keepassxc # Password manager
       killall # Process killing command
+      latexmk # LaTeX builder
       libnotify # Notification sender
       libreoffice
       ncdu # Disk storage utility
@@ -78,7 +80,6 @@ in
       waybar # Taskbar
       wev # Wayland event viewer
       wl-clipboard # Wayland clipboard CLI
-      zathura # PDF viewer
 
       # Add custom scripts
       (addScript "bluetooth-menu")

@@ -35,20 +35,21 @@
       lsp = {
         enable = true;
         servers = {
-          pyright.enable = true;
-          nil_ls.enable = true;
-          lua_ls.enable = true;
           clojure_lsp.enable = true;
+          lua_ls.enable = true;
+          nil_ls.enable = true;
+          pyright.enable = true;
         };
       };
 
       treesitter = {
         enable = true;
         settings.ensure_installed = [
-          "python"
-          "nix"
-          "lua"
           "clojure"
+          "latex"
+          "lua"
+          "nix"
+          "python"
         ];
       };
 
@@ -140,6 +141,15 @@
 
       # Git modifications in the gutter
       gitsigns.enable = true;
+
+      # LaTeX
+      vimtex = {
+        enable = true;
+        settings = {
+          view_method = "zathura";
+          compiler_method = "latexmk";
+        };
+      };
 
       # Lua for Neovim
       lazydev.enable = true;
@@ -308,6 +318,14 @@
         key = "<leader>gr";
         action = "<cmd>Gitsigns reset_hunk<CR>";
         options.desc = "Reset Git hunk";
+      }
+
+      # LaTeX
+      {
+        mode = "n";
+        key = "<leader>ll";
+        action = "<cmd>VimtexCompile<CR>";
+        options.desc = "Compile LaTeX";
       }
     ];
   };
