@@ -50,7 +50,11 @@
       };
 
       xwayland.force_zero_scaling = true;
-      misc.disable_hyprland_logo = true;
+
+      misc = {
+        disable_hyprland_logo = true;
+        focus_on_activate = true;
+      };
 
       env = [
         "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
