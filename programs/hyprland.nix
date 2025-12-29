@@ -65,7 +65,7 @@
 
       windowrulev2 = [
         "float, class:^floating$"
-        "size 800 600, class:^floating$"
+        "size 80% 80%, class:^floating$"
 
         "float, class:^neofetch$"
         "center, class:^neofetch$"
@@ -86,6 +86,7 @@
         "super, r, exec, ranger"
         "super, w, exec, librewolf"
         "super, s, exec, signal-desktop"
+        "super, b, exec, kitty --class floating -e sh -c btop"
         "super, n, exec, kitty --class neofetch -e sh -c 'neofetch | head -n -3; read -n 1'"
         "super, space, exec, fuzzel"
         "super, q, killactive"
