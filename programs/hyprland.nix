@@ -64,12 +64,16 @@
       ];
 
       windowrulev2 = [
-        "float, class:^(floating)$"
-        "size 800 600, class:^(floating)$"
+        "float, class:^floating$"
+        "size 800 600, class:^floating$"
 
-        "float, class:^(neofetch)$"
-        "center, class:^(neofetch)$"
-        "size 850 400, class:^(neofetch)$"
+        "float, class:^neofetch$"
+        "center, class:^neofetch$"
+        "size 850 400, class:^neofetch$"
+
+        "noborder, class:^com\\.flipperdevices\\.$"
+        "noblur, class:^com\\.flipperdevices\\.$"
+        "noshadow, class:^com\\.flipperdevices\\.$"
       ];
 
       monitor = [

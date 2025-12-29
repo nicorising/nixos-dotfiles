@@ -170,6 +170,12 @@
     keymaps = [
       {
         mode = "n";
+        key = "<leader><CR>";
+        action = "i<CR><Esc>";
+        options.desc = "Insert line break";
+      }
+      {
+        mode = "n";
         key = "<C-h>";
         action = "<C-w>h";
         options.desc = "Move to left window";

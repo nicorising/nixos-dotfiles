@@ -56,6 +56,14 @@
     pulse.enable = true;
   };
 
+  # USB devices
+  services.udev.extraRules = ''
+    # Flipper Zero serial port
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", TAG+="uaccess"
+    # Flipper Zero DFU
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", TAG+="uaccess"
+  '';
+
   # Removable media
   services.udisks2.enable = true;
 
