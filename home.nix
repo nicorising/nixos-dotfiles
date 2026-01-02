@@ -28,11 +28,13 @@ in
     homeDirectory = "/home/nico";
 
     packages = with pkgs; [
+      bitwarden-desktop # Password manager
       bluez
       bluez-tools
       brightnessctl # CLI screen brightness control
       capitaine-cursors-themed # Cursor theme
       clojure # Clojure
+      dig # DNS lookup tool
       discord
       extremetuxracer
       fd # File finder
