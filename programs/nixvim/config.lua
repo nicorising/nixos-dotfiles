@@ -9,11 +9,9 @@ function FocusEditor()
     end
 end
 
--- Configure quiting to just close the current buffer
-
+-- Configure quitting to just close the current buffer
 vim.api.nvim_create_user_command('Q', function(opts)
     FocusEditor()
-
     local buffers = vim.fn.getbufinfo({ buflisted = 1 })
     if #buffers > 1 then
         if opts.bang then
@@ -25,30 +23,40 @@ vim.api.nvim_create_user_command('Q', function(opts)
         end
     else
         if opts.bang then
-            vim.cmd('quitall!')
+            vim.cmd('bdelete!')
+            vim.cmd('enew')
         elseif vim.bo.modified then
             vim.notify('E37: No write since last change (add ! to override)', vim.log.levels.ERROR)
         else
-            vim.cmd('quitall')
+            vim.cmd('bdelete')
+            vim.cmd('enew')
         end
     end
 end, { bang = true })
 
 vim.api.nvim_create_user_command('WQ', function()
     FocusEditor()
-
     vim.cmd('write')
     local buffers = vim.fn.getbufinfo({ buflisted = 1 })
     if #buffers > 1 then
         vim.cmd('bprevious | bdelete #')
     else
-        vim.cmd('quitall')
+        vim.cmd('bdelete')
+        vim.cmd('enew')
     end
 end, {})
 
 vim.cmd('cnoreabbrev q Q')
 vim.cmd('cnoreabbrev q! Q!')
 vim.cmd('cnoreabbrev wq WQ')
+
+-- Show diagnostic text when hovering
+
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        vim.diagnostic.open_float(nil, { focusable = false })
+    end,
+})
 
 -- Add border to LSP hover box
 

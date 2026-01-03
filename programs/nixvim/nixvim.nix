@@ -9,13 +9,14 @@
     enableMan = false; # Fix LSP package bug
 
     globals.mapleader = " ";
-    diagnostic.settings.virtual_text = true;
+    diagnostic.settings.float.border = "rounded";
     extraConfigLua = builtins.readFile ./config.lua;
 
     opts = {
       number = true;
       relativenumber = true;
       clipboard = "unnamedplus";
+      updatetime = 300;
     };
 
     highlightOverride = {
@@ -33,6 +34,7 @@
       # Language server protocol
       lsp = {
         enable = true;
+
         servers = {
           clojure_lsp.enable = true;
           lua_ls.enable = true;
@@ -40,17 +42,27 @@
           pyright.enable = true;
           texlab.enable = true;
         };
+
+        keymaps = {
+          lspBuf = {
+            gd = "definition";
+          };
+        };
       };
 
+      # Syntax highlighting and code parsing
       treesitter = {
         enable = true;
-        settings.ensure_installed = [
-          "clojure"
-          "latex"
-          "lua"
-          "nix"
-          "python"
-        ];
+        grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+
+        highlight.enable = true;
+        indent.enable = true;
+      };
+
+      # Syntax tree navigation/selection
+      flash = {
+        enable = true;
+        settings.modes.treesitter.enable = true;
       };
 
       # Formatter
@@ -244,6 +256,49 @@
         key = "<leader>fs";
         action = "<cmd>lua FocusEditor()<CR><cmd>Telescope lsp_document_symbols<CR>";
         options.desc = "LSP symbols";
+      }
+      {
+        mode = "n";
+        key = "gi";
+        action = "<cmd>Telescope lsp_implementations<cr>";
+        options.desc = "Implementations";
+      }
+      {
+        mode = "n";
+        key = "gr";
+        action = "<cmd>Telescope lsp_references<cr>";
+        options.desc = "References";
+      }
+
+      # Flash
+      {
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
+        key = "s";
+        action = "<cmd>lua require('flash').jump()<cr>";
+        options.desc = "Flash";
+      }
+      {
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
+        key = "S";
+        action = "<cmd>lua require('flash').treesitter()<cr>";
+        options.desc = "Flash Treesitter";
+      }
+      {
+        mode = [
+          "o"
+          "x"
+        ];
+        key = "R";
+        action = "<cmd>lua require('flash').treesitter_search()<cr>";
+        options.desc = "Treesitter search";
       }
 
       # Buffers
