@@ -64,3 +64,7 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'BufWritePost', 'TermLeave' }, {
         vim.cmd('Gitsigns refresh')
     end,
 })
+
+-- Configure venv-selector
+
+require("venv-selector").setup({})

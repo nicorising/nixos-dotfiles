@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   programs.nixvim = {
     enable = true;
@@ -33,10 +35,10 @@
         enable = true;
         servers = {
           clojure_lsp.enable = true;
-          texlab.enable = true;
           lua_ls.enable = true;
           nil_ls.enable = true;
           pyright.enable = true;
+          texlab.enable = true;
         };
       };
 
@@ -154,6 +156,20 @@
       # Lua for Neovim
       lazydev.enable = true;
     };
+
+    extraPlugins = [
+      # Python virtual environment selector
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "venv-selector-nvim";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "linux-cultist";
+          repo = "venv-selector.nvim";
+          rev = "main";
+          sha256 = "+0bpYcb+sHzcxHxBLzNzeSFqk+hfkPhfmp0yxjuhbg4=";
+        };
+      })
+    ];
 
     colorschemes.gruvbox = {
       enable = true;
@@ -287,13 +303,13 @@
       }
       {
         mode = "n";
-        key = "<leader><";
+        key = "<leader>,";
         action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineMovePrev<CR>";
         options.desc = "Move buffer left";
       }
       {
         mode = "n";
-        key = "<leader>>";
+        key = "<leader>.";
         action = "<cmd>lua FocusEditor()<CR><cmd>BufferLineMoveNext<CR>";
         options.desc = "Move buffer right";
       }
@@ -324,6 +340,14 @@
         key = "<leader>gr";
         action = "<cmd>Gitsigns reset_hunk<CR>";
         options.desc = "Reset Git hunk";
+      }
+
+      # Virtual environment selector
+      {
+        mode = "n";
+        key = "<leader>vs";
+        action = "<cmd>VenvSelect<cr>";
+        options.desc = "Select Python virtual environment";
       }
     ];
   };
