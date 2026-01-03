@@ -16,6 +16,7 @@
       expandtab = true;
       shiftwidth = 4;
       tabstop = 4;
+      fixendofline = true;
       clipboard = "unnamedplus";
     };
 
@@ -330,4 +331,6 @@
       }
     ];
   };
+
+  home.file.".editorconfig".source = ./nvim/.editorconfig;
 }
