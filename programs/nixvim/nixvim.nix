@@ -328,5 +328,5 @@
     ];
   };
 
-  home.file.".editorconfig".source = ./nvim/.editorconfig;
+  home.file.".editorconfig".source = ./.editorconfig;
 }
