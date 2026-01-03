@@ -8,4 +8,3 @@ insert_final_newline = true
 
 [*.{js,ts,jsx,tsx,nix,json,yaml,yml}]
 indent_size = 2
-
