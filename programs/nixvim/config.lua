@@ -55,3 +55,12 @@ vim.cmd('cnoreabbrev wq WQ')
 vim.keymap.set('n', 'K', function()
     vim.lsp.buf.hover({ border = 'rounded' })
 end)
+
+-- Auto-refresh Neo-tree/Gitsigns
+
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufWritePost', 'TermLeave' }, {
+    callback = function()
+        vim.cmd('Neotree refresh')
+        vim.cmd('Gitsigns refresh')
+    end,
+})
