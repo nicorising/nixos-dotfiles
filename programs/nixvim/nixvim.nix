@@ -39,8 +39,9 @@
           clojure_lsp.enable = true;
           lua_ls.enable = true;
           nil_ls.enable = true;
-          pyright.enable = true;
           texlab.enable = true;
+          pyright.enable = true;
+          ruff.enable = true;
         };
 
         keymaps = {
@@ -72,7 +73,10 @@
         settings = {
           format_on_save.lsp_fallback = true;
           formatters_by_ft = {
-            python = [ "ruff_format" ];
+            python = [
+              "ruff_fix"
+              "ruff_format"
+            ];
             nix = [ "nixfmt" ];
           };
         };
