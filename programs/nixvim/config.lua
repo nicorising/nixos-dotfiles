@@ -60,7 +60,7 @@ end)
 
 vim.api.nvim_create_autocmd({ 'FocusGained', 'BufWritePost', 'TermLeave' }, {
     callback = function()
-        vim.cmd('Neotree refresh')
         vim.cmd('Gitsigns refresh')
+        require('neo-tree.sources.manager').refresh('filesystem')
     end,
 })
