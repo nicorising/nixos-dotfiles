@@ -3,6 +3,13 @@
     enable = true;
 
     matchBlocks = {
+      "nicorising.com" = {
+        hostname = "nicorising.com";
+        user = "nico";
+        identityFile = "~/.ssh/nicorising_ed25519";
+        identitiesOnly = true;
+      };
+
       "github.com" = {
         hostname = "github.com";
         user = "git";
