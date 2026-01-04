@@ -248,6 +248,12 @@
         action = "<C-w>k";
         options.desc = "Move to upper window";
       }
+      {
+        mode = "n";
+        key = "<leader>ca";
+        action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
+        options.desc = "Code actions";
+      }
 
       # Neo-tree
       {
@@ -435,66 +441,60 @@
   home.file.".editorconfig".source = ./.editorconfig;
 
   # Fixes for treesitter syntax highlighting
-  xdg.configFile."nvim/queries/ecma/highlights.scm".text = ''
-    [
-      "break"
-      "case"
-      "catch"
-      "continue"
-      "debugger"
-      "default"
-      "do"
-      "else"
-      "finally"
-      "for"
-      "if"
-      "return"
-      "switch"
-      "throw"
-      "try"
-      "while"
-      "with"
-      "const"
-      "let"
-      "var"
-      "function"
-      "class"
-      "new"
-      "async"
-      "await"
-    ] @keyword
+  xdg.configFile = {
+    "nvim/queries/ecma/highlights.scm".text = ''
+      [
+        "break"
+        "case"
+        "catch"
+        "continue"
+        "default"
+        "do"
+        "else"
+        "finally"
+        "for"
+        "if"
+        "return"
+        "switch"
+        "throw"
+        "try"
+        "while"
+        "const"
+        "let"
+        "var"
+        "function"
+        "class"
+        "new"
+        "async"
+        "await"
+        "import"
+        "export"
+        "from"
+        "as"
+      ] @keyword
 
-    [
-      "import"
-      "export"
-      "from"
-      "as"
-    ] @keyword.import
+      (string) @string
+      (number) @number
+      (true) @boolean
+      (false) @boolean
+      (null) @constant.builtin
+      (comment) @comment
+    '';
 
-    (string) @string
-    (number) @number
-    (true) @boolean
-    (false) @boolean
-    (null) @constant.builtin
-    (comment) @comment
-    (identifier) @variable
-    (property_identifier) @property
+    "nvim/queries/jsx/highlights.scm".text = ''
+      (jsx_element
+        open_tag: (jsx_opening_element
+          name: (identifier) @tag))
 
-    (call_expression
-      function: (identifier) @function.call)
+      (jsx_element
+        close_tag: (jsx_closing_element
+          name: (identifier) @tag))
 
-    (function_declaration
-      name: (identifier) @function)
+      (jsx_self_closing_element
+        name: (identifier) @tag)
 
-    (method_definition
-      name: (property_identifier) @function.method)
-
-    (arrow_function) @function
-
-    (class_declaration
-      name: (identifier) @type)
-  '';
-  xdg.configFile."nvim/queries/jsx/highlights.scm".text = ''
-    ; inherits: javascript
-  '';
+      (jsx_attribute
+        (property_identifier) @tag.attribute)
+    '';
+  };
 }
