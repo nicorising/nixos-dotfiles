@@ -37,11 +37,14 @@
 
         servers = {
           clojure_lsp.enable = true;
+          eslint.enable = true;
           lua_ls.enable = true;
           nil_ls.enable = true;
-          texlab.enable = true;
           pyright.enable = true;
           ruff.enable = true;
+          tailwindcss.enable = true;
+          texlab.enable = true;
+          ts_ls.enable = true;
         };
 
         keymaps = {
@@ -72,12 +75,30 @@
 
         settings = {
           format_on_save.lsp_fallback = true;
+
           formatters_by_ft = {
+            javascript = [
+              "eslint_d"
+              "prettier"
+            ];
+            javascriptreact = [
+              "eslint_d"
+              "prettier"
+            ];
+            nix = [ "nixfmt" ];
             python = [
               "ruff_fix"
               "ruff_format"
             ];
-            nix = [ "nixfmt" ];
+            typescript = [
+              "eslint_d"
+              "prettier"
+            ];
+            typescriptreact = [
+              "eslint_d"
+              "prettier"
+            ];
+            "_" = [ "prettier" ];
           };
         };
       };
@@ -412,4 +433,68 @@
   };
 
   home.file.".editorconfig".source = ./.editorconfig;
+
+  # Fixes for treesitter syntax highlighting
+  xdg.configFile."nvim/queries/ecma/highlights.scm".text = ''
+    [
+      "break"
+      "case"
+      "catch"
+      "continue"
+      "debugger"
+      "default"
+      "do"
+      "else"
+      "finally"
+      "for"
+      "if"
+      "return"
+      "switch"
+      "throw"
+      "try"
+      "while"
+      "with"
+      "const"
+      "let"
+      "var"
+      "function"
+      "class"
+      "new"
+      "async"
+      "await"
+    ] @keyword
+
+    [
+      "import"
+      "export"
+      "from"
+      "as"
+    ] @keyword.import
+
+    (string) @string
+    (number) @number
+    (true) @boolean
+    (false) @boolean
+    (null) @constant.builtin
+    (comment) @comment
+    (identifier) @variable
+    (property_identifier) @property
+
+    (call_expression
+      function: (identifier) @function.call)
+
+    (function_declaration
+      name: (identifier) @function)
+
+    (method_definition
+      name: (property_identifier) @function.method)
+
+    (arrow_function) @function
+
+    (class_declaration
+      name: (identifier) @type)
+  '';
+  xdg.configFile."nvim/queries/jsx/highlights.scm".text = ''
+    ; inherits: javascript
+  '';
 }

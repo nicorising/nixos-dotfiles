@@ -53,6 +53,8 @@ in
       nil # Nix language server
       nixfmt-rfc-style # Nix formatter
       nodejs # Node.js
+      nodePackages.eslint_d # JS/JSX linter
+      nodePackages.prettier # General formatter
       pamixer
       pavucontrol
       pgadmin4-desktopmode # PostgreSQL GUI

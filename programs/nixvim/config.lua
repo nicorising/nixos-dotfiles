@@ -54,7 +54,7 @@ vim.cmd('cnoreabbrev wq WQ')
 
 vim.api.nvim_create_autocmd("CursorHold", {
     callback = function()
-        vim.diagnostic.open_float(nil, { focusable = false })
+        vim.diagnostic.open_float(nil, { focusable = true })
     end,
 })
 
@@ -73,6 +73,14 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'BufWritePost', 'TermLeave' }, {
     end,
 })
 
--- Configure venv-selector
+-- Setup venv-selector
 
 require("venv-selector").setup({})
+
+-- Configure ESLint to search for a config
+
+require("conform").formatters.eslint_d = {
+    cwd = function(_, ctx)
+        return vim.fs.root(ctx.filename, { "eslint.config.js" })
+    end,
+}
