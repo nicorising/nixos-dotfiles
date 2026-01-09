@@ -38,6 +38,7 @@ in
       discord
       extremetuxracer
       fd # File finder
+      ffmpeg # Image processing
       gcc # Compilers
       hyprshot # Screenshot tool
       inotify-tools # Tools for inotify
@@ -60,8 +61,7 @@ in
       pgadmin4-desktopmode # PostgreSQL GUI
       playerctl # CLI media player control
       popsicle # USB flasher
-      prismlauncher
-      python314 # Python 3.14
+      prismlauncher # Minecraft launcher
       ripgrep # Search tool
       ruff # Python linter/formatter
       signal-desktop
@@ -83,6 +83,22 @@ in
       waybar # Taskbar
       wev # Wayland event viewer
       wl-clipboard # Wayland clipboard CLI
+
+      (python3.withPackages (
+        ps: with ps; [
+          cairosvg # Image rendering
+          ipykernel # Jupyter kernel
+          ipython # IPython kernel
+          jupyter-client # Jupyer
+          matplotlib # Plotting
+          nbformat # Notebook format support
+          notebook # Jupyter notebook
+          numpy # Math operations
+          pillow # Image processing
+          pynvim # Python in Neovim
+          jupytext # Jupyter to Python conversion
+        ]
+      ))
 
       # Add custom scripts
       (addScript "bluetooth-menu")

@@ -179,6 +179,16 @@
       # Git modifications in the gutter
       gitsigns.enable = true;
 
+      # Image rendering
+      image = {
+        enable = true;
+        backend = "kitty";
+
+        integrations = {
+          markdown.enabled = true;
+        };
+      };
+
       # LaTeX
       vimtex = {
         enable = true;
@@ -192,6 +202,8 @@
 
       # Lua for Neovim
       lazydev.enable = true;
+
+      molten.enable = true;
     };
 
     extraPlugins = [
@@ -434,6 +446,26 @@
         key = "<leader>vs";
         action = "<cmd>VenvSelect<cr>";
         options.desc = "Select Python virtual environment";
+      }
+
+      # Molten
+      {
+        mode = "n";
+        key = "<leader>mi";
+        action = "<cmd>MoltenInit<cr>";
+        options.desc = "Initialize Molten";
+      }
+      {
+        mode = "n";
+        key = "<leader>mr";
+        action = "<cmd>MoltenEvaluateLine<cr>";
+        options.desc = "Evaluate line";
+      }
+      {
+        mode = "v";
+        key = "<leader>mr";
+        action = "<cmd>MoltenEvaluateVisual<cr>";
+        options.desc = "Evaluate selection";
       }
     ];
   };
