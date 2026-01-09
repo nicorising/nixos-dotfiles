@@ -61,6 +61,7 @@ in
       pgadmin4-desktopmode # PostgreSQL GUI
       playerctl # CLI media player control
       popsicle # USB flasher
+      postman # API testing tool
       prismlauncher # Minecraft launcher
       ripgrep # Search tool
       ruff # Python linter/formatter

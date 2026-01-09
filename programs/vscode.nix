@@ -8,6 +8,7 @@
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         charliermarsh.ruff
+        dbaeumer.vscode-eslint
         esbenp.prettier-vscode
         jdinhlife.gruvbox
         jnoortheen.nix-ide
