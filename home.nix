@@ -57,6 +57,7 @@ in
       nodePackages.eslint_d # JS/JSX linter
       nodePackages.prettier # General formatter
       pamixer
+      pandoc # File converter
       pavucontrol
       pgadmin4-desktopmode # PostgreSQL GUI
       playerctl # CLI media player control
@@ -93,8 +94,10 @@ in
           jupyter-client # Jupyer
           matplotlib # Plotting
           nbformat # Notebook format support
+          nltk # Natural language toolkit
           notebook # Jupyter notebook
           numpy # Math operations
+          pandas # Data analysis
           pillow # Image processing
           pynvim # Python in Neovim
           jupytext # Jupyter to Python conversion
