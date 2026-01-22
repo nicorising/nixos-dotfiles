@@ -33,6 +33,7 @@ in
       bluez-tools
       brightnessctl # CLI screen brightness control
       capitaine-cursors-themed # Cursor theme
+      chirp # Radio programming tool
       clojure # Clojure
       dig # DNS lookup tool
       discord
