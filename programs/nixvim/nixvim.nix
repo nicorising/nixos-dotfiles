@@ -90,6 +90,7 @@
               "ruff_fix"
               "ruff_format"
             ];
+            tex = [ "tex-fmt" ];
             typescript = [
               "eslint_d"
               "prettier"

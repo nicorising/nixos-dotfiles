@@ -73,6 +73,7 @@ in
       spotify # Spotify
       steam # Steam
       swww # Wallpaper manager
+      tex-fmt # LaTeX formatter
       texliveFull # LaTeX
       tldr # Quick manuals
       tree-sitter # Parser generator tool
@@ -100,6 +101,7 @@ in
           pandas # Data analysis
           pillow # Image processing
           pynvim # Python in Neovim
+          scikit-learn # Scikit learn
           jupytext # Jupyter to Python conversion
         ]
       ))
