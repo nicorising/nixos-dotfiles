@@ -87,6 +87,7 @@ in
       waybar # Taskbar
       wev # Wayland event viewer
       wl-clipboard # Wayland clipboard CLI
+      zip # Zip file tools
 
       (python3.withPackages (
         ps: with ps; [
