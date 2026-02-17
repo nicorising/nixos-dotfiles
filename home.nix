@@ -28,6 +28,7 @@ in
     homeDirectory = "/home/nico";
 
     packages = with pkgs; [
+      alsa-utils # Advanced Linux Sound Architecture
       bitwarden-desktop # Password manager
       bluez
       bluez-tools
@@ -48,6 +49,7 @@ in
       killall # Process killing command
       libnotify # Notification sender
       libreoffice
+      mullvad-vpn
       ncdu # Disk storage utility
       neofetch # System information display
       nerd-fonts.noto # Nerd fonts
@@ -57,8 +59,10 @@ in
       nodejs # Node.js
       nodePackages.eslint_d # JS/JSX linter
       nodePackages.prettier # General formatter
+      obs-studio # Video recording
       pamixer
       pandoc # File converter
+      parted # Disk formatting
       pavucontrol
       pgadmin4-desktopmode # PostgreSQL GUI
       playerctl # CLI media player control
@@ -74,11 +78,13 @@ in
       spotify # Spotify
       steam # Steam
       swww # Wallpaper manager
+      teams-for-linux
       tex-fmt # LaTeX formatter
       texliveFull # LaTeX
       tldr # Quick manuals
       tree-sitter # Parser generator tool
       qFlipper # Flipper Zero GUI
+      qbittorrent
       unzip # Unzip utility
       usbutils # USB CLI tools
       uv # Python package manager
@@ -88,10 +94,12 @@ in
       wev # Wayland event viewer
       wl-clipboard # Wayland clipboard CLI
       zip # Zip file tools
+      zoom-us # Zoom
 
       (python3.withPackages (
         ps: with ps; [
           cairosvg # Image rendering
+          gensim # Vector space modeling
           ipykernel # Jupyter kernel
           ipython # IPython kernel
           jupyter-client # Jupyer
@@ -103,7 +111,12 @@ in
           pandas # Data analysis
           pillow # Image processing
           pynvim # Python in Neovim
+          torch # PyTorch
           scikit-learn # Scikit learn
+          seaborn # Data visualization
+          spacy # Natural language toolkit
+          spacy-models.en_core_web_sm # Spacy English model
+          statsmodels # Statistical models
           jupytext # Jupyter to Python conversion
         ]
       ))
@@ -144,12 +157,7 @@ in
   services = {
     hyprpolkitagent.enable = true;
 
-    udiskie = {
-      enable = true;
-      notify = true;
-      tray = "always";
-    };
-
+    # Notifications
     mako = {
       enable = true;
 
@@ -160,6 +168,18 @@ in
         text-color = "#ebdbb2";
         background-color = "#282828";
       };
+    };
+
+    udiskie = {
+      enable = true;
+      notify = true;
+      tray = "always";
+    };
+
+    # Inter-device communication
+    kdeconnect = {
+      enable = true;
+      indicator = true;
     };
   };
 

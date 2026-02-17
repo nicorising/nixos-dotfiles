@@ -10,8 +10,29 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nicotop";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nicotop";
+    networkmanager.enable = true;
+
+    firewall = {
+      allowedTCPPortRanges = [
+        {
+          # KDE Connect
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          # KDE Connect
+          from = 1714;
+          to = 1764;
+        }
+      ];
+    };
+  };
+  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -44,6 +65,8 @@
     "nix-command"
     "flakes"
   ];
+
+  powerManagement.cpuFreqGovernor = "powersave";
 
   security.polkit.enable = true;
 
