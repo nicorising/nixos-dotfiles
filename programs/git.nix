@@ -11,7 +11,7 @@
         email = "nico@nicorising.com";
       };
 
-      aliases = {
+      alias = {
         lg = "log --graph --oneline --all";
         pfwl = "push --force-with-lease";
         history = ''
