@@ -104,6 +104,7 @@ in
           ipython # IPython kernel
           jupyter-client # Jupyer
           matplotlib # Plotting
+          mypy # Static typing
           nbformat # Notebook format support
           nltk # Natural language toolkit
           notebook # Jupyter notebook
