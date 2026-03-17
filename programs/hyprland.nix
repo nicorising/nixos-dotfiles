@@ -63,17 +63,17 @@
         "ELECTRON_OZONE_PLATFORM_HINT, auto"
       ];
 
-      windowrulev2 = [
-        "float, class:^floating$"
-        "size 80% 80%, class:^floating$"
+      windowrule = [
+        "match:class ^floating$, float on"
+        "match:class ^floating$, size 80% 80%"
 
-        "float, class:^neofetch$"
-        "center, class:^neofetch$"
-        "size 850 400, class:^neofetch$"
+        "match:class ^neofetch$, float on"
+        "match:class ^neofetch$, center on"
+        "match:class ^neofetch$, size 850 400"
 
-        "noborder, class:^com\\.flipperdevices\\.$"
-        "noblur, class:^com\\.flipperdevices\\.$"
-        "noshadow, class:^com\\.flipperdevices\\.$"
+        "match:class ^com\\.flipperdevices\\.$, border_size 0"
+        "match:class ^com\\.flipperdevices\\.$, no_blur on"
+        "match:class ^com\\.flipperdevices\\.$, no_shadow on"
       ];
 
       monitor = [

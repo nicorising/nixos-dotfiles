@@ -35,6 +35,7 @@ in
       brightnessctl # CLI screen brightness control
       capitaine-cursors-themed # Cursor theme
       chirp # Radio programming tool
+      claude-code # Claude code
       clojure # Clojure
       dig # DNS lookup tool
       discord
