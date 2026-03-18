@@ -67,10 +67,6 @@
         "match:class ^floating$, float on"
         "match:class ^floating$, size 80% 80%"
 
-        "match:class ^neofetch$, float on"
-        "match:class ^neofetch$, center on"
-        "match:class ^neofetch$, size 850 400"
-
         "match:class ^com\\.flipperdevices\\.$, border_size 0"
         "match:class ^com\\.flipperdevices\\.$, no_blur on"
         "match:class ^com\\.flipperdevices\\.$, no_shadow on"
@@ -87,7 +83,6 @@
         "super, w, exec, librewolf"
         "super, s, exec, signal-desktop"
         "super, b, exec, kitty --class floating -e sh -c btop"
-        "super, n, exec, kitty --class neofetch -e sh -c 'neofetch | head -n -3; read -n 1'"
         "super, space, exec, fuzzel"
         "super, q, killactive"
         "super, f, togglefloating"

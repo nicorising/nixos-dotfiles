@@ -40,6 +40,7 @@ in
       dig # DNS lookup tool
       discord
       extremetuxracer
+      fastfetch # System information display
       fd # File finder
       ffmpeg # Image processing
       gcc # Compilers
@@ -52,11 +53,10 @@ in
       libreoffice
       mullvad-vpn
       ncdu # Disk storage utility
-      neofetch # System information display
       nerd-fonts.noto # Nerd fonts
       networkmanagerapplet # GUI for advanced network settings
       nil # Nix language server
-      nixfmt-rfc-style # Nix formatter
+      nixfmt # Nix formatter
       nodejs # Node.js
       nodePackages.eslint_d # JS/JSX linter
       nodePackages.prettier # General formatter
