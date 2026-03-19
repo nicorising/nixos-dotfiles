@@ -124,7 +124,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "hyprland";
+        command = "start-hyprland";
         user = "nico";
       };
       default_session = initial_session;
