@@ -58,8 +58,8 @@ in
       nil # Nix language server
       nixfmt # Nix formatter
       nodejs # Node.js
-      nodePackages.eslint_d # JS/JSX linter
-      nodePackages.prettier # General formatter
+      eslint_d # JS/JSX linter
+      prettier # General formatter
       obs-studio # Video recording
       pamixer
       pandoc # File converter
@@ -78,7 +78,7 @@ in
       socat # Data relay tool
       spotify # Spotify
       steam # Steam
-      swww # Wallpaper manager
+      awww # Wallpaper manager
       teams-for-linux
       tex-fmt # LaTeX formatter
       texliveFull # LaTeX
@@ -104,6 +104,7 @@ in
           ipykernel # Jupyter kernel
           ipython # IPython kernel
           jupyter-client # Jupyer
+          keras # Keras ML API
           matplotlib # Plotting
           mypy # Static typing
           nbformat # Notebook format support
@@ -112,8 +113,11 @@ in
           numpy # Math operations
           pandas # Data analysis
           pillow # Image processing
+          pyarrow # Data processing
           pynvim # Python in Neovim
+          tensorflow # Machine learning
           torch # PyTorch
+          transformers # Transformer models
           scikit-learn # Scikit learn
           seaborn # Data visualization
           spacy # Natural language toolkit

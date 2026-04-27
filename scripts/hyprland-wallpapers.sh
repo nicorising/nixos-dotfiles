@@ -10,8 +10,8 @@ if [ ${#wallpapers[@]} -eq 0 ]; then
   exit 1
 fi
 
-if ! pgrep swww-daemon > /dev/null; then
-  swww-daemon &
+if ! pgrep awww-daemon > /dev/null; then
+  awww-daemon &
 fi
 
 wallpaper_map_file="$HOME/.cache/hyprland-wallpapers"
@@ -30,7 +30,7 @@ hyprlock_wallpaper="${wallpapers[$hyprlock_index]}"
 ln -sf "$hyprlock_wallpaper" "$HOME/.cache/hyprlock-wallpaper"
 
 initial_wallpaper="${wallpapers[0]}"
-swww img "$initial_wallpaper" -t none
+awww img "$initial_wallpaper" -t none
 
 socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | \
 while read -r line; do
@@ -39,7 +39,7 @@ while read -r line; do
       workspace=$(echo "$line" | cut -d',' -f2)
       wallpaper=$(grep "^$workspace:" "$wallpaper_map_file" | head -n1 | cut -d':' -f2-)
       if [ -n "$wallpaper" ] && [ -f "$wallpaper" ]; then
-        swww img "$wallpaper" --transition-type fade --transition-duration 0.5
+        awww img "$wallpaper" --transition-type fade --transition-duration 0.5
       fi
       ;;
   esac

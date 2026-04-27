@@ -111,7 +111,22 @@
 
   hardware.graphics.enable32Bit = true;
 
+  # Shared libraries for dynamically linked binaries
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glib
+    libGL
+    libice
+    libsm
+    libx11
+    libxcb
+    libxext
+    libxi
+    libxkbcommon
+    stdenv.cc.cc.lib
+    wayland
+    zlib
+  ];
 
   programs.neovim = {
     enable = true;
