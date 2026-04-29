@@ -210,7 +210,8 @@
     extraPlugins = [
       # Python virtual environment selector
       (pkgs.vimUtils.buildVimPlugin {
-        name = "venv-selector-nvim";
+        pname = "venv-selector-nvim";
+        version = "main";
 
         src = pkgs.fetchFromGitHub {
           owner = "linux-cultist";
