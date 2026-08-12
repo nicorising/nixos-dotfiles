@@ -25,6 +25,7 @@
       clipboard = "unnamedplus";
       updatetime = 300;
       autoread = true;
+      scrolloff = 10;
     };
 
     highlightOverride = {
