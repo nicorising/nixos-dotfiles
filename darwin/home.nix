@@ -11,7 +11,6 @@
 
     packages = with pkgs; [
       awscli2
-      notion-app
       postgresql_16
       postman
       ssm-session-manager-plugin
