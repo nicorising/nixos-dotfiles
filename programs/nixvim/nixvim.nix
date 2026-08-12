@@ -25,7 +25,7 @@
       clipboard = "unnamedplus";
       updatetime = 300;
       autoread = true;
-      scrolloff = 10;
+      scrolloff = 10; # Leave 10 lines above/below cursor.
     };
 
     highlightOverride = {
