@@ -1,4 +1,4 @@
--- Show diagnostic text when hovering
+-- Show diagnostic text when hovering.
 
 vim.api.nvim_create_autocmd("CursorHold", {
     callback = function()
@@ -6,13 +6,13 @@ vim.api.nvim_create_autocmd("CursorHold", {
     end,
 })
 
--- Add border to LSP hover box
+-- Add border to LSP hover box.
 
 vim.keymap.set('n', 'K', function()
     vim.lsp.buf.hover({ border = 'rounded' })
 end)
 
--- Check for buffers changed on disk
+-- Check for buffers changed on disk.
 vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'TermLeave' }, {
     callback = function()
         if vim.fn.mode() ~= 'c' and vim.fn.getcmdwintype() == '' then
@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'TermLeav
     end,
 })
 
--- Refresh Neo-Tree and Gitsigns and notify when the buffer was reloaded
+-- Refresh Neo-Tree and Gitsigns and notify when the buffer was reloaded.
 vim.api.nvim_create_autocmd('FileChangedShellPost', {
     callback = function()
         require('neo-tree.sources.manager').refresh('filesystem')
@@ -30,10 +30,11 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
     end,
 })
 
--- Configure ESLint to search for a config
+-- Configure ESLint to search for a config.
 
 require("conform").formatters.eslint_d = {
     cwd = function(_, ctx)
         return vim.fs.root(ctx.filename, { "eslint.config.js" })
     end,
+    require_cwd = true,
 }
