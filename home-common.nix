@@ -13,7 +13,6 @@
     programs/ranger.nix
     programs/starship.nix
     programs/tmux.nix
-    programs/treehouse/treehouse.nix
     programs/zoxide.nix
   ];
 
@@ -39,7 +38,6 @@
     terraform # Infrastructure-as-code tool
     tldr # Quick manuals
     tree-sitter # Parser generator tool
-    treehouse # Git worktree manager
     unzip # Unzip utility
     uv # Python package manager
     zip # Zip file tools
